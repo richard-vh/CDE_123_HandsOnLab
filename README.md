@@ -1,1 +1,3 @@
-# CDE_123_HOL
+# CDE Hands On Lab
+
+This Lab is WIP!
