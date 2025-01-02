@@ -15,7 +15,7 @@ We will prototype and test the Iceberg Merge Into and Incremental Read Operation
 
 Start a CDE Session of type Spark Connect. Then, run "prototype.py".
 
-![alt text](img/cde_spark_connect_vscode.png)
+![alt text](../../img/cde_spark_connect_vscode.png)
 
 On your terminal run the following commands:
 
