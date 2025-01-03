@@ -17,14 +17,15 @@ Start a CDE Session of type Spark Connect. Then, run "prototype.py".
 
 ![alt text](../../img/cde_spark_connect_vscode.png)
 
-On your terminal run the following commands:
+On your terminal run the following commands. Make sure to edit the "vcluster-ednpoint" and "arg" options to reflect the DEV CDE Virtual Cluster where you will run the spark-submit, and the corresponding Cloud Storage location.
 
 ```
 cde spark submit \
   pyspark-app.py \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1 \
   --executor-memory "4g" \
-  --executor-cores 2
+  --executor-cores 2 \
+  --arg s3a://go01-demo/data
 ```
 
 You are ready to test the Spark Submit as a CDE Spark Job.

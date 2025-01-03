@@ -44,10 +44,10 @@ from pyspark.sql.types import *
 
 spark = SparkSession \
     .builder \
-    .appName("BANK TRANSACTIONS BRONZE LAYER") \
+    .appName("BANK TRANSACTIONS SAMPLE APP") \
     .getOrCreate()
 
-storageLocation = "s3a://go01-demo/data"
+storageLocation = sys.argv[1] #"s3a://go01-demo/data"
 username = "user001"
 
 ### LOAD HISTORICAL TRANSACTIONS FILE FROM CLOUD STORAGE
@@ -66,9 +66,9 @@ trxBatchDf.createOrReplaceTempView("trx_batch")
 spark.sql("""SELECT TRANSACTION_TYPE, COUNT(*) FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} GROUP BY TRANSACTION_TYPE""".format(username)).show()
 
 # MERGE OPERATION
-spark.sql("""MERGE INTO spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} t   
-USING (SELECT * FROM trx_batch) s          
-ON t.credit_card_number = s.credit_card_number               
+spark.sql("""MERGE INTO spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} t
+USING (SELECT * FROM trx_batch) s
+ON t.credit_card_number = s.credit_card_number
 WHEN MATCHED AND t.transaction_amount < 1000 AND t.transaction_currency != "CHF" THEN UPDATE SET t.transaction_type = "invalid"
 WHEN NOT MATCHED THEN INSERT *""".format(username))
 
