@@ -18,7 +18,7 @@ CDE allows you to create, manage, and schedule Apache Spark jobs without the ove
 
 ## Step by Step Instructions
 
-Detailed instructions are provided in the [step_by_step_guides](https://github.com/pdefusco/CDE_121_HOL/tree/main/step_by_step_guides) folder.
+Detailed instructions are provided in the [step_by_step_guides](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/english) folder.
 
 * [Link to the English Guide]().
 * [Enlace a la Guía en Español]()
