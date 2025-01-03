@@ -1,30 +1,3 @@
-## 3. Sync with CDE repository
-
-Create a CDE repository and create the CDE Spark Job using the contents.
-
-First, delete the job and repository in case they have been created before.
-
-```
-cde job delete \
-  --name cde_spark_job_test \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
-
-cde repository delete \
-  --name sparkAppRepoDev \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
-```
-
-Now create the CDE Repository and sync it with the Git Repository.
-
-```
-cde repository create --name sparkAppRepoDev \
-  --branch main \
-  --url https://github.com/pdefusco/CDE_SparkConnect.git \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
-
-cde repository sync --name sparkAppRepoDev \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
-```
 
 ## 4. Deploy using CLI
 
