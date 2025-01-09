@@ -165,7 +165,7 @@ def saveTransactionData(bankTransactionsDf, storageLocation, username):
             write. \
             format("json"). \
             mode("overwrite"). \
-            save("{0}/mkthol/trans/{1}/rawtransactions".format(storageLocation, username))
+            save("{0}/trans/{1}/rawtransactions".format(storageLocation, username))
     except Exception as e:
         print("SAVING SYNTHETIC TRANSACTION DATA UNSUCCESSFUL")
         print('\n')
@@ -185,7 +185,7 @@ def saveTransactionBatch(transactionsBatchDf, storageLocation, username):
             write. \
             format("json"). \
             mode("overwrite"). \
-            save("{0}/mkthol/trans/{1}/trx_batch_1".format(storageLocation, username))
+            save("{0}/trans/{1}/trx_batch_1".format(storageLocation, username))
     except Exception as e:
         print("SAVING TRANSACTION BATCH 1 UNSUCCESSFUL")
         print('\n')
@@ -205,7 +205,7 @@ def saveSecondTransactionBatch(secondTransactionsBatchDf, storageLocation, usern
             write. \
             format("json"). \
             mode("overwrite"). \
-            save("{0}/mkthol/trans/{1}/trx_batch_2".format(storageLocation, username))
+            save("{0}/trans/{1}/trx_batch_2".format(storageLocation, username))
     except Exception as e:
         print("SAVING TRANSACTION BATCH 2 UNSUCCESSFUL")
         print('\n')
@@ -225,7 +225,7 @@ def savePiiData(piiDf, storageLocation, username):
             .write. \
             mode('overwrite') \
             .options(header='True', delimiter=',') \
-            .csv("{0}/mkthol/pii/{1}/pii".format(storageLocation, username))
+            .csv("{0}/pii/{1}/pii".format(storageLocation, username))
     except Exception as e:
         print("SAVING SYNTHETIC TRANSACTION DATA UNSUCCESSFUL")
         print('\n')

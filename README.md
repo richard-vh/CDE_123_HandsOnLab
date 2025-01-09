@@ -25,3 +25,7 @@ Detailed instructions are provided in the [step_by_step_guides](https://github.c
 * [Lien vers le Guide en Français]()
 * [Link per la Guida in Italiano]()
 * [Link para o Guia em Português]()
+
+## Setup Instructions
+
+The HOL requires data and CDE dependencies (e.g. shared Files, Pyhton, Docker Resource) to be created before the event. The attached [Setup Guide]() provides instructions for meeting these requirements.

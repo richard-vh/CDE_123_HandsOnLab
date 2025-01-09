@@ -49,7 +49,7 @@ storageLocation = "s3a://go01-demo/data"
 username = "user001"
 
 ### LOAD HISTORICAL TRANSACTIONS FILE FROM CLOUD STORAGE
-transactionsDf = spark.read.json("{0}/mkthol/trans/{1}/rawtransactions".format(storageLocation, username))
+transactionsDf = spark.read.json("{0}/trans/{1}/rawtransactions".format(storageLocation, username))
 transactionsDf.printSchema()
 
 spark.sql("CREATE DATABASE IF NOT EXISTS SPARK_CATALOG.HOL_DB_{}".format(username))
@@ -57,16 +57,16 @@ spark.sql("DROP TABLE IF EXISTS spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} PURGE"
 
 transactionsDf.writeTo("SPARK_CATALOG.HOL_DB_{0}.TRANSACTIONS_{0}".format(username)).using("iceberg").tableProperty("write.format.default", "parquet").createOrReplace()
 
-trxBatchDf = spark.read.schema("credit_card_number string, credit_card_provider string, event_ts timestamp, latitude double, longitude double, transaction_amount long, transaction_currency string, transaction_type string").json("{0}/mkthol/trans/{1}/trx_batch_1".format(storageLocation, username))
+trxBatchDf = spark.read.schema("credit_card_number string, credit_card_provider string, event_ts timestamp, latitude double, longitude double, transaction_amount long, transaction_currency string, transaction_type string").json("{0}/trans/{1}/trx_batch_1".format(storageLocation, username))
 trxBatchDf.createOrReplaceTempView("trx_batch")
 
 # PRE-MERGE COUNTS BY TRANSACTION TYPE:
 spark.sql("""SELECT TRANSACTION_TYPE, COUNT(*) FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} GROUP BY TRANSACTION_TYPE""".format(username)).show()
 
 # MERGE OPERATION
-spark.sql("""MERGE INTO spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} t   
-USING (SELECT * FROM trx_batch) s          
-ON t.credit_card_number = s.credit_card_number               
+spark.sql("""MERGE INTO spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} t
+USING (SELECT * FROM trx_batch) s
+ON t.credit_card_number = s.credit_card_number
 WHEN MATCHED AND t.transaction_amount < 1000 AND t.transaction_currency != "CHF" THEN UPDATE SET t.transaction_type = "invalid"
 WHEN NOT MATCHED THEN INSERT *""".format(username))
 
@@ -80,7 +80,7 @@ spark.sql("SELECT * FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0}.history".form
 spark.sql("SELECT * FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0}.snapshots".format(username)).show()
 
 # APPEND SECOND DATA BATCH
-trxBatchDf = spark.read.schema("credit_card_number string, credit_card_provider string, event_ts timestamp, latitude double, longitude double, transaction_amount long, transaction_currency string, transaction_type string").json("{0}/mkthol/trans/{1}/trx_batch_2".format(storageLocation, username))
+trxBatchDf = spark.read.schema("credit_card_number string, credit_card_provider string, event_ts timestamp, latitude double, longitude double, transaction_amount long, transaction_currency string, transaction_type string").json("{0}/trans/{1}/trx_batch_2".format(storageLocation, username))
 trxBatchDf.writeTo("spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0}".format(username)).using("iceberg").append()
 
 # STORE FIRST AND LAST SNAPSHOT ID'S FROM SNAPSHOTS TABLE
