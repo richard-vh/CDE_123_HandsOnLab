@@ -75,17 +75,9 @@ class BankDataGen:
                     .withColumn("latitude", "float", minValue=24.3963, maxValue=49.3843, random=True)
                     .withColumn("transaction_currency", values=["USD", "EUR", "KWD", "BHD", "GBP", "CHF", "MEX"])
                     .withColumn("transaction_amount", "decimal", minValue=0.01, maxValue=30000, random=True)
-                    .withColumn("transaction", StructType([StructField('transaction_currency', StringType()), StructField('transaction_amount', StringType()), StructField('transaction_type', StringType())]),
-                    expr="named_struct('transaction_currency', transaction_currency, 'transaction_amount', transaction_amount, 'transaction_type', transaction_type)",
-                    baseColumn=['transaction_currency', 'transaction_currency', 'transaction_type'])
-                    .withColumn("transaction_geolocation", StructType([StructField('latitude',StringType()), StructField('longitude', StringType())]),
-                      expr="named_struct('latitude', latitude, 'longitude', longitude)",
-                      baseColumn=['latitude', 'longitude'])
                     )
 
         df = fakerDataspec.build()
-
-        df = df.drop(*('latitude', 'longitude', 'transaction_currency', 'transaction_amount', 'transaction_type'))
 
         df = df.withColumn("credit_card_number", df["credit_card_number"].cast("string"))
 

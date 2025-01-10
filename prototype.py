@@ -45,7 +45,7 @@ from pyspark.sql.types import *
 from cde import CDESparkConnectSession
 spark = CDESparkConnectSession.builder.sessionName('paul-hol-session').get()
 
-storageLocation = "s3a://goes-se-sandbox/data/cde-123-hol"
+storageLocation = "s3a://go01-demo/data/cde-123-hol"
 username = "user001"
 
 ### LOAD HISTORICAL TRANSACTIONS FILE FROM CLOUD STORAGE
