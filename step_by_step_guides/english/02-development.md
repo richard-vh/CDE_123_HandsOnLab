@@ -41,7 +41,7 @@ In the Sessions UI, validate the Session is Running.
 
 #### Install Spark Connect Prerequisites
 
-Open VSCode and install the following Spark Connect prerequisites:
+From the terminal, install the following Spark Connect prerequisites:
 
 * Create a new Python Virtual Environment:
 
@@ -60,11 +60,22 @@ pip install cdeconnect.tar.gz
 pip install pyspark-3.5.1.tar.gz
 ```
 
+* If you intend to use VSCode, open it. If you intend to use JupyterLab, launch the server with:
+
+```
+jupyter lab
+```
+
+![alt text](../../img/jupyterlab_validate.png)
+
+![alt text](../../img/vscode_validate.png)
+
+
 #### Run Your First PySpark & Iceberg Application via Spark Connect
 
 You are now ready to connect to the CDE Session from your local IDE using Spark Connect.
 
-Open "prototype.py" in VSCode. Make the following changes:
+Open "prototype.py" in your IDE (VSCode or JupyterLab). Make the following changes:
 
 * At line 46, edit the "sessionName" parameter with your Session Name from the above CLI command.
 * At line 48, edit the "storageLocation" parameter with the following: <Enter Cloud Storage Location Here>
