@@ -1,5 +1,6 @@
 # CDE 1.23 Hands on Lab
 
+0. [PySpark & Iceberg Application code walkthrough]()
 1. [Test jobs with Spark Connect from local](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  
 2. [Once ready for operationalization push to git](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#2-push-to-git).
 3. [Sync with CDE repository](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#3-sync-with-cde-repository)
@@ -11,11 +12,69 @@ We will prototype and test the Iceberg Merge Into and Incremental Read Operation
 
 # Instructions
 
+## 0. PySpark & Iceberg Application code walkthrough
+
+
+
 ## 1. Test jobs in CDE Session from local
 
-Start a CDE Session of type Spark Connect. Then, run "prototype.py".
+#### Launch a CDE Spark Connect Session
+
+Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it doesn't collide with other users' sessions.
+
+```
+cde session create \
+  --name paul-hol-session \
+  --type spark-connect \
+  --num-executors 2 \
+  --driver-cores 2 \
+  --driver-memory "2g" \
+  --executor-cores 2 \
+  --executor-memory "2g"
+```
+
+In the Sessions UI, validate the Session is Running.
+
+![alt text](../../img/cde_session_validate_1.png)
+
+![alt text](../../img/cde_session_validate_2.png)
+
+#### Install Spark Connect Prerequisites
+
+Open VSCode and install the following Spark Connect prerequisites:
+
+* Create a new Python Virtual Environment:
+
+```
+python -m venv cde-123-hol
+source cde-123-hol/bin/activate
+```
+
+* Install the following packages:
+
+```
+pip install numpy==1.26.4
+pip install --upgrade cmake
+pip install pyarrow==14.0.0
+pip install cdeconnect.tar.gz  
+pip install pyspark-3.5.1.tar.gz
+```
+
+#### Run Your First PySpark & Iceberg Application via Spark Connect
+
+You are now ready to connect to the CDE Session from your local IDE using Spark Connect.
+
+Open "prototype.py" in VSCode. Make the following changes:
+
+* At line 46, edit the "sessionName" parameter with your Session Name from the above CLI command.
+* At line 48, edit the "storageLocation" parameter with the following: <Enter Cloud Storage Location Here>
+* At line 49, edit the "username" parameter with your assigned username.
+
+Now run "prototype.py" and observe outputs.
 
 ![alt text](../../img/cde_spark_connect_vscode.png)
+
+#### Prototype the Spark & Iceberg Application as a Spark Submit
 
 On your terminal run the following commands. Make sure to edit the "vcluster-ednpoint" and "arg" options to reflect the DEV CDE Virtual Cluster where you will run the spark-submit, and the corresponding Cloud Storage location.
 
@@ -25,10 +84,10 @@ cde spark submit \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1 \
   --executor-memory "4g" \
   --executor-cores 2 \
-  --arg s3a://go01-demo/data
+  --arg s3a://goes-se-sandbox/data/cde-123-hol
 ```
 
-You are ready to test the Spark Submit as a CDE Spark Job.
+You are ready to transform the Spark Submit into a CDE Spark Job.
 
 ## 2. Push to git
 

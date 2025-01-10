@@ -38,19 +38,19 @@ Clone this repository to your machine. Then run the deployment script.
 Deployment script command template:
 
 ```
-% ./setup/deploy_hol.sh <docker-user> <cdp-workload-user> <storage-location>
+% ./setup/deploy_hol.sh <docker-user> <cdp-workload-user> <max-hol-participants> <storage-location>
 ```
 
 For example:
 
 ```
 #AWS
-% ./banking_example/deploy_hol.sh pauldefusco pauldefusco s3a://goes-se-sandbox/data/cde-123-hol
+% ./setup/deploy_hol.sh pauldefusco pauldefusco 10 s3a://goes-se-sandbox/data/cde-123-hol
 ```
 
 ```
 #Azure
-% ./banking_example/deploy_hol.sh pauldefusco pauldefusco abfs://logs@go01demoazure.dfs.core.windows.net/data/cde-123-hol
+% ./setup/deploy_hol.sh pauldefusco pauldefusco 10 abfs://logs@go01demoazure.dfs.core.windows.net/data/cde-123-hol
 ```
 
 ## Teardown Instructions

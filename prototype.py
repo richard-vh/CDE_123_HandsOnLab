@@ -43,9 +43,9 @@ import pyspark.sql.functions as F
 from pyspark.sql.types import *
 
 from cde import CDESparkConnectSession
-spark = CDESparkConnectSession.builder.sessionName('demosession-spark').get()
+spark = CDESparkConnectSession.builder.sessionName('paul-hol-session').get()
 
-storageLocation = "s3a://go01-demo/data"
+storageLocation = "s3a://goes-se-sandbox/data/cde-123-hol"
 username = "user001"
 
 ### LOAD HISTORICAL TRANSACTIONS FILE FROM CLOUD STORAGE
@@ -98,3 +98,4 @@ incReadDf = spark.read\
 
 print("Incremental Report:")
 incReadDf.show()
+
