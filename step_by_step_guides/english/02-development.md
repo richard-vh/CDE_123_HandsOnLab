@@ -95,7 +95,7 @@ cde spark submit \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1 \
   --executor-memory "4g" \
   --executor-cores 2 \
-  --arg s3a://goes-se-sandbox/data/cde-123-hol
+  s3a://go01-demo/data/cde-123-hol
 ```
 
 You are ready to transform the Spark Submit into a CDE Spark Job.
