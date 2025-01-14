@@ -1,4 +1,6 @@
-# CDE 1.23 Hands on Lab
+# Spark Application Development in CDE
+
+## Contents
 
 0. [PySpark & Iceberg Application code walkthrough]()
 1. [Test jobs with Spark Connect from local](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  
@@ -6,15 +8,12 @@
 3. [Sync with CDE repository](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#3-sync-with-cde-repository)
 4. [Deploy using CLI](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#4-deploy-using-cli)
 5. [Monitor](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#5-monitor)
-6. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#6-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
 
 We will prototype and test the Iceberg Merge Into and Incremental Read Operations.
 
-# Instructions
+## Instructions
 
 ## 0. PySpark & Iceberg Application code walkthrough
-
-
 
 ## 1. Test jobs in CDE Session from local
 
@@ -100,43 +99,31 @@ cde spark submit \
 
 You are ready to transform the Spark Submit into a CDE Spark Job.
 
-## 2. Push to git
-
-This code is looking good. Let's push updates to the git repo.
-
-```
-git add pyspark-app.py
-git commit -m "developed pyspark job"
-git push
-```
-
-We can now create a CDE Repository in order to import the application into the Virtual Cluster.
-
 ## 3. Sync with CDE repository
 
-Create a CDE repository and create the CDE Spark Job using the contents.
+CDE Repositories are used to import files and dependencies into Virtual Clusters by cloning from git repositories. Next, you will create a CDE repository and use its content to create the CDE Spark Job definition.
 
 First, delete the job and repository in case they have been created before.
 
 ```
 cde job delete \
-  --name cde_spark_job_test \
+  --name cde_spark_job_user001 \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
 cde repository delete \
-  --name sparkAppRepoDev \
+  --name sparkAppRepoDevUser001 \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 ```
 
 Now create the CDE Repository and sync it with the Git Repository.
 
 ```
-cde repository create --name sparkAppRepoDev \
+cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
-  --url https://github.com/pdefusco/CDE_SparkConnect.git \
+  --url https://github.com/pdefusco/CDE_123_HOL.git \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
-cde repository sync --name sparkAppRepoDev \
+cde repository sync --name sparkAppRepoDevUser001 \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 ```
 
@@ -147,15 +134,16 @@ Now create a CDE Spark job using the CDE Repository as a dependency.
 The files in the Repository are mounted and reachable by the Application at runtime.
 
 ```
-cde job create --name cde_spark_iceberg_job_test \
+cde job create --name cde_spark_iceberg_job_user001 \
   --type spark \
   --mount-1-resource sparkAppRepoDev \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1 \
+  --arg s3a://go01-demo/data/cde-123-hol
 
-cde job run --name cde_spark_iceberg_job_test \
+cde job run --name cde_spark_iceberg_job_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
@@ -170,9 +158,9 @@ Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
 cde job list \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
-# List all jobs in the Virtual Cluster whose name is "cde_spark_job_test":
+# List all jobs in the Virtual Cluster whose name is "cde_spark_job_user001":
 cde job list \
-  --filter 'name[eq]cde_spark_iceberg_job_test' \
+  --filter 'name[eq]cde_spark_iceberg_job_user001' \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
 # List all jobs in the Virtual Cluster whose job application file name equals "pyspark-app.py":
@@ -180,9 +168,9 @@ cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
-# List all runs for Job "cde_spark_job_test":
+# List all runs for Job "cde_spark_job_user001":
 cde run list \
-  --filter 'job[eq]cde_spark_iceberg_job_test' \
+  --filter 'job[eq]cde_spark_iceberg_job_user001' \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 ```
 
