@@ -1,4 +1,4 @@
-# Spark Application Deployment in CDE
+# Deployment & Orchestration with Airflow in CDE
 
 ## Contents
 
@@ -19,20 +19,22 @@ cde job delete \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
 cde repository delete \
-  --name sparkAppRepoPrd_user001 \
+  --name sparkAppRepoPrdUser001 \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 ```
 
 Create and sync the same Git repo from the PRD Cluster:
 
 ```
-cde repository create --name sparkAppRepoPrdUser001 \
+cde repository create \
+  --name sparkAppRepoPrdUser001 \
   --branch main \
-  --url https://github.com/pdefusco/CDE_SparkConnect.git \
+  --url https://github.com/pdefusco/CDE_123_HOL.git \
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
-cde repository sync --name sparkAppRepoPrdUser001 \
- --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+cde repository sync \
+  --name sparkAppRepoPrdUser001 \
+  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 
 cde job create --name cde_spark_job_prd_user001 \
   --type spark \
@@ -73,7 +75,7 @@ cde repository sync --name sparkAppRepoPrdUser001 \
  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
 ```
 
-First create the CDE Spark jobs. Then create the CDE Airflow job.
+Create the CDE Spark jobs. Notice these are categorized into Bronze, Silver and Gold reflecting the Lakehouse Data Architecture.
 
 ```
 cde job create --name cde_spark_job_bronze_user001 \
@@ -107,7 +109,11 @@ cde job create --name cde_spark_job_gold_user001 \
   --executor-memory "4g" \
   --application-file de-pipeline/spark/003_Lakehouse_Gold.py\
   --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+```
 
+Then create the CDE Airflow job. This job will orchestrate your Lakehouse Spark jobs above.
+
+```
 cde job create --name airflow-orchestration \
   --type airflow \
   --mount-1-resource sparkAppRepoPrdUser001 \

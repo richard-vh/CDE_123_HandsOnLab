@@ -51,7 +51,7 @@ import pendulum
 import logging
 
 
-username = "pauldefusco" # Enter your username here
+username = "user001" # Enter your username here
 dag_name = "BankFraudHol-"+username
 logger = logging.getLogger(__name__)
 
@@ -79,21 +79,21 @@ start = DummyOperator(
 bronze = CDEJobRunOperator(
         task_id='data-ingestion',
         dag=dag,
-        job_name='cde_spark_job_bronze', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='cde_spark_job_bronze' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 silver = CDEJobRunOperator(
         task_id='iceberg-merge-branch',
         dag=dag,
-        job_name='cde_spark_job_silver', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='cde_spark_job_silver' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 gold = CDEJobRunOperator(
         task_id='gold-layer',
         dag=dag,
-        job_name='cde_spark_job_gold', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='cde_spark_job_gold' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
