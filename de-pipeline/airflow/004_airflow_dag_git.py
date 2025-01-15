@@ -79,21 +79,21 @@ start = DummyOperator(
 bronze = CDEJobRunOperator(
         task_id='data-ingestion',
         dag=dag,
-        job_name='cde_spark_job_bronze' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='cde_spark_job_bronze_' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 silver = CDEJobRunOperator(
         task_id='iceberg-merge-branch',
         dag=dag,
-        job_name='cde_spark_job_silver' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='cde_spark_job_silver_' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 gold = CDEJobRunOperator(
         task_id='gold-layer',
         dag=dag,
-        job_name='cde_spark_job_gold' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='cde_spark_job_gold_' + username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
