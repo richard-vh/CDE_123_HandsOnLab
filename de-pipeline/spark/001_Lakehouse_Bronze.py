@@ -118,11 +118,6 @@ transactionsDf.printSchema()
 transactionsDf = transactionsDf.select(flatten_struct(transactionsDf.schema))
 transactionsDf.printSchema()
 
-### RENAME MULTIPLE COLUMNS
-cols = [col for col in transactionsDf.columns if col.startswith("transaction")]
-new_cols = [col.split(".")[1] for col in cols]
-transactionsDf = renameMultipleColumns(transactionsDf, cols, new_cols)
-
 ### CAST TYPES
 cols = ["transaction_amount", "latitude", "longitude"]
 transactionsDf = castMultipleColumns(transactionsDf, cols)
