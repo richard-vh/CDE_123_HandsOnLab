@@ -114,7 +114,7 @@ cde job create --name cde_spark_job_gold_user001 \
 Then create the CDE Airflow job. This job will orchestrate your Lakehouse Spark jobs above.
 
 ```
-cde job create --name airflow-orchestration \
+cde job create --name airflow-orchestration-user001 \
   --type airflow \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --dag-file de-pipeline/airflow/004_airflow_dag_git.py\
