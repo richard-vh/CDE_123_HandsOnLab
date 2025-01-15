@@ -1,12 +1,15 @@
-# Job Observability & Data Governance
+# Job Observability & Data Governance in CDP
 
-* [Lab 5: Monitoring Jobs with Cloudera Observability and CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
-* [Lab 6: Spark Job Governance with CDP Data Catalog](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-6-spark-job-governance-with-cdp-data-catalog)
+## Contents
+
+* [8. Monitoring Jobs with Cloudera Observability and CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
+* [9. Spark Job Governance with CDP Data Catalog](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-6-spark-job-governance-with-cdp-data-catalog)
 * [Summary](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#summary)
 * [Useful Links and Resources](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#useful-links-and-resources)
 
+## Instructions
 
-### Lab 5: Monitoring Jobs with Cloudera Observability and CDE
+### 8. Monitoring Jobs with Cloudera Observability and CDE
 
 CDE provides built-in Job observability feature including a Job Runs UI, the Airflow UI, and the ability to download job metadata and logs via the CDE API and CLI.
 
@@ -62,7 +65,7 @@ Select the job with the highest duration and explore the Execution Details tab t
 ![alt text](../../img/new_obs_5.png)
 
 
-### Lab 6: Spark Job Governance with CDP Data Catalog
+### 9. Spark Job Governance with CDP Data Catalog
 
 The CDP Data Catalog is a service within CDP that enables you to understand, manage, secure, and govern data assets across the enterprise. Data Catalog helps you understand data across multiple clusters and across multiple CDP environments. Using Data Catalog, you can understand how data is interpreted for use, how it is created and modified, and how data access is secured and protected.
 
