@@ -80,7 +80,7 @@ Create the CDE Spark jobs. Notice these are categorized into Bronze, Silver and 
 ```
 cde job create --name cde_spark_job_bronze_user001 \
   --type spark \
-  --arg pauldefusco \
+  --arg user001 \
   --arg s3a://go01-demo/data/cde-123-hol \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
@@ -91,7 +91,7 @@ cde job create --name cde_spark_job_bronze_user001 \
 
 cde job create --name cde_spark_job_silver_user001 \
   --type spark \
-  --arg pauldefusco \
+  --arg user001 \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
@@ -101,7 +101,7 @@ cde job create --name cde_spark_job_silver_user001 \
 
 cde job create --name cde_spark_job_gold_user001 \
   --type spark \
-  --arg pauldefusco \
+  --arg user001 \
   --arg s3a://go01-demo/data/cde-123-hol \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \

@@ -136,7 +136,7 @@ The files in the Repository are mounted and reachable by the Application at runt
 ```
 cde job create --name cde_spark_iceberg_job_user001 \
   --type spark \
-  --mount-1-resource sparkAppRepoDev \
+  --mount-1-resource sparkAppRepoDevUser001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
