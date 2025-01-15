@@ -65,7 +65,7 @@ cde resource upload --name Airflow-Files-Shared --local-path cde_airflow_jobs/my
 echo "CREATE PYTHON ENVIRONMENT SHARED RESOURCE"
 cde resource delete --name Python-Env-Shared
 cde resource create --type python-env --name Python-Env-Shared
-cde resource upload --name Python-Env-Shared --local-path cde_spark_jobs/requirements.txt
+cde resource upload --name Python-Env-Shared --local-path de-pipeline/spark/requirements.txt
 
 function loading_icon_env() {
   local loading_animation=( '—' "\\" '|' '/' )

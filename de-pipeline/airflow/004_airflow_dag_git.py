@@ -100,7 +100,7 @@ gold = CDEJobRunOperator(
 github_list_repos = GithubOperator(
     task_id="github_list_repos",
     github_method="get_user",
-    github_conn_id="my_github_conn",
+    github_conn_id="default_github",
     result_processor=lambda user: logger.info(list(user.get_repos())),
     dag=dag
 )
