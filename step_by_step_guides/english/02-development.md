@@ -17,6 +17,67 @@ We will prototype and test the Iceberg Merge Into and Incremental Read Operation
 
 ## 1. Test jobs in CDE Session from local
 
+#### Pull the Docker Container and Launch the IDE
+
+Clone the GitHub repository in your local machine.
+
+```
+git clone https://github.com/pdefusco/CDE_123_HOL.git
+cd CDE_123_HOL
+```
+
+Launch the Docker container.
+
+```
+docker run -p 8888:8888 pauldefusco/cde123hol
+```
+
+Launch the JupyterLab IDE in your browser by copy and pasting the provided url as shown below.
+
+![alt text](../../img/docker-container-launch.png)
+
+You now have access to all lab materials from the JupyterLab IDE in the left pane. From here, you can launch notebooks and run the terminal.
+
+![alt text](../../img/jl-home.png)
+
+You will use the terminal in the IDE to run the CDE CLI commands for the labs. First you need to configure the CLI and install Spark Connect though.
+
+#### Configure the CDE CLI and Install Spark Connect for CDE.
+
+Open CDE's configurations and apply your Workload Username and Jobs API URL. You can find your Jobs API URL in your Virtual Cluster's Details Page.
+
+![alt text](../../img/jobs-api-url-1.png)
+
+![alt text](../../img/jobs-api-url-2.png)
+
+![alt text](../../img/cli-configs-1.png)
+
+![alt text](../../img/cli-configs-2.png)
+
+Next, generate a CDP access token and edit your CDP credentials.
+
+![alt text](../../img/usr-mgt-1.png)
+
+![alt text](../../img/usr-mgt-2.png)
+
+![alt text](../../img/usr-mgt-3.png)
+
+![alt text](../../img/cdp-credentials.png)
+
+Finally, create a Python environment and install the CDE Spark Connect tarballs.
+
+```
+python -m venv cde-123-hol
+source cde-123-hol/bin/activate
+```
+
+```
+pip3 install cdeconnect.tar.gz  
+pip3 install pyspark-3.5.1.tar.gz
+```
+
+![alt text](../../img/install-deps.png)
+
 #### Launch a CDE Spark Connect Session
 
 Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it doesn't collide with other users' sessions.
@@ -37,37 +98,6 @@ In the Sessions UI, validate the Session is Running.
 ![alt text](../../img/cde_session_validate_1.png)
 
 ![alt text](../../img/cde_session_validate_2.png)
-
-#### Install Spark Connect Prerequisites
-
-From the terminal, install the following Spark Connect prerequisites:
-
-* Create a new Python Virtual Environment:
-
-```
-python -m venv cde-123-hol
-source cde-123-hol/bin/activate
-```
-
-* Install the following packages:
-
-```
-pip install numpy==1.26.4
-pip install --upgrade cmake
-pip install pyarrow==14.0.0
-pip install cdeconnect.tar.gz  
-pip install pyspark-3.5.1.tar.gz
-```
-
-* If you intend to use VSCode, open it. If you intend to use JupyterLab, launch the server with:
-
-```
-jupyter lab
-```
-
-![alt text](../../img/jupyterlab_validate.png)
-
-![alt text](../../img/vscode_validate.png)
 
 
 #### Run Your First PySpark & Iceberg Application via Spark Connect
