@@ -69,9 +69,6 @@ Finally, create a Python environment and install the CDE Spark Connect tarballs.
 ```
 python -m venv cde-123-hol
 source cde-123-hol/bin/activate
-```
-
-```
 pip3 install cdeconnect.tar.gz  
 pip3 install pyspark-3.5.1.tar.gz
 ```
@@ -93,12 +90,13 @@ cde session create \
   --executor-memory "2g"
 ```
 
+![alt text](../../img/launch-session.png)
+
 In the Sessions UI, validate the Session is Running.
 
 ![alt text](../../img/cde_session_validate_1.png)
 
 ![alt text](../../img/cde_session_validate_2.png)
-
 
 #### Run Your First PySpark & Iceberg Application via Spark Connect
 
