@@ -90,25 +90,25 @@ def generate_oom():
 # Create two large datasets
 ifSkew = random.randint(1, 100)
 
-if ifSkew < 2:
+"""if ifSkew < 2:
     oom_df = generate_oom()
     try:
         collected_data = oom_df.collect()
         print(f"Collected {len(collected_data)} rows")
     except Exception as e:
-        print(f"Error {e}")
+        print(f"Error {e}")"""
 
-elif ifSkew < 8:
+if ifSkew < 8:
     # AQE Disabled
     spark.conf.set("spark.sql.adaptive.enabled", False)
-    df1 = generate_skewed_data(1000000)
-    df2 = generate_skewed_data(1000000)
+    df1 = generate_skewed_data(10000000)
+    df2 = generate_skewed_data(10000000)
     print("Skewed Data Created")
 
 elif ifSkew < 28:
     # Create a skewed dataset
-    df1 = generate_skewed_data(1000000)
-    df2 = generate_skewed_data(1000000)
+    df1 = generate_skewed_data(10000000)
+    df2 = generate_skewed_data(10000000)
     print("Skewed Data Created")
 
 else:
