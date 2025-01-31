@@ -75,21 +75,42 @@ def generate_data(num_records, num_partitions=4):
         data.append((id_value, amount))
     return spark.createDataFrame(data, ["id", "amount"])
 
+def generate_oom():
+    """
+    Generates two datasets with random values. This will simulate a large shuffle
+    when a join operation is performed later.
+    """
+    data = []
+    for _ in range(1000000000000000000):
+        id_value = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        amount = random.randint(1, 1000)
+        data.append((id_value, amount))
+    return spark.createDataFrame(data, ["id", "amount"])
+
 # Create two large datasets
 ifSkew = random.randint(1, 100)
 
 if ifSkew < 2:
+    oom_df = generate_oom()
+    try:
+        collected_data = oom_df.collect()
+        print(f"Collected {len(collected_data)} rows")
+    except Exception as e:
+        print(f"Error {e}")
+
+elif ifSkew < 8:
     # AQE Disabled
     spark.conf.set("spark.sql.adaptive.enabled", False)
     df1 = generate_skewed_data(1000000)
     df2 = generate_skewed_data(1000000)
     print("Skewed Data Created")
 
-if ifSkew < 10:
+elif ifSkew < 28:
     # Create a skewed dataset
     df1 = generate_skewed_data(1000000)
     df2 = generate_skewed_data(1000000)
     print("Skewed Data Created")
+
 else:
     df1 = generate_data(1000000)  # Dataset 1 with 1 million records
     df2 = generate_data(1000000)  # Dataset 2 with 1 million records

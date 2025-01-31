@@ -29,14 +29,3 @@ cde job create \
 cde job run \
   --name skewJob
 ```
-
-"schedule": {
-"enabled": false,
-"user": "jprosser",
-"cronExpression": "30 */1 * * *",
-"start": "2024-11-24",
-"end": "2024-11-24"
-}
-
-
-./setup/deploy_hol.sh pauldefusco pauldefusco 10 s3a://cde-hol-25-buk-b1dd6f64/data/cde-123-hol
