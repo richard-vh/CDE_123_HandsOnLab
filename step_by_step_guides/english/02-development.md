@@ -85,7 +85,7 @@ cde session create \
   --executor-memory "2g"
 ```
 
-![alt text](../../img/launch-session.png)
+![alt text](../../img/launchsess.png)
 
 In the Sessions UI, validate the Session is Running.
 
@@ -162,7 +162,9 @@ cde job create --name cde_spark_iceberg_job_user001 \
   --application-file pyspark-app.py\
   --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1 \
   --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
+```
 
+```
 cde job run --name cde_spark_iceberg_job_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
@@ -189,7 +191,11 @@ Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
 # List all Jobs in the Virtual Cluster:
 cde job list \
   --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+```
 
+![alt text](../../img/cde-job-list-1.png)
+
+```
 # List all jobs in the Virtual Cluster whose name is "cde_spark_job_user001":
 cde job list \
   --filter 'name[eq]cde_spark_iceberg_job_user001' \
@@ -199,16 +205,16 @@ cde job list \
 cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
   --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+```
 
+![alt text](../../img/cde-job-list-2.png)
+
+```
 # List all runs for Job "cde_spark_job_user001":
 cde run list \
   --filter 'job[eq]cde_spark_iceberg_job_user001' \
   --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
-
-![alt text](../../img/cde-job-list-1.png)
-
-![alt text](../../img/cde-job-list-2.png)
 
 ![alt text](../../img/cde-job-list-3.png)
 
