@@ -101,19 +101,19 @@ ifSkew = random.randint(1, 100)
 if ifSkew < 8:
     # AQE Disabled
     spark.conf.set("spark.sql.adaptive.enabled", False)
-    df1 = generate_skewed_data(100000000)
-    df2 = generate_skewed_data(100000000)
+    df1 = generate_skewed_data(1000000)
+    df2 = generate_skewed_data(1000000)
     print("Skewed Data Created")
 
 elif ifSkew < 28:
     # Create a skewed dataset
-    df1 = generate_skewed_data(100000000)
-    df2 = generate_skewed_data(100000000)
+    df1 = generate_skewed_data(1000000)
+    df2 = generate_skewed_data(1000000)
     print("Skewed Data Created")
 
 else:
-    df1 = generate_data(10000000)  # Dataset 1 with 1 million records
-    df2 = generate_data(10000000)  # Dataset 2 with 1 million records
+    df1 = generate_data(100000)  # Dataset 1 with 1 million records
+    df2 = generate_data(100000)  # Dataset 2 with 1 million records
     print("Uniformly Distributed Data Created")
 
 # Show schema to confirm the data

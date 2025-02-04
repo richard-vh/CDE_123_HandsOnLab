@@ -2,7 +2,6 @@
 
 ## Contents
 
-0. [PySpark & Iceberg Application code walkthrough]()
 1. [Test jobs with Spark Connect from local](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  
 2. [Once ready for operationalization push to git](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#2-push-to-git).
 3. [Sync with CDE repository](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#3-sync-with-cde-repository)
@@ -12,8 +11,6 @@
 We will prototype and test the Iceberg Merge Into and Incremental Read Operations.
 
 ## Instructions
-
-## 0. PySpark & Iceberg Application code walkthrough
 
 ## 1. Test jobs in CDE Session from local
 
@@ -67,8 +64,6 @@ Next, generate a CDP access token and edit your CDP credentials.
 Finally, create a Python environment and install the CDE Spark Connect tarballs.
 
 ```
-python -m venv cde-123-hol
-source cde-123-hol/bin/activate
 pip3 install cdeconnect.tar.gz  
 pip3 install pyspark-3.5.1.tar.gz
 ```
@@ -100,66 +95,63 @@ In the Sessions UI, validate the Session is Running.
 
 #### Run Your First PySpark & Iceberg Application via Spark Connect
 
-You are now ready to connect to the CDE Session from your local IDE using Spark Connect.
+You are now ready to connect to the CDE Session from your local JupyterLab IDE using Spark Connect.
 
-Open "prototype.py" in your IDE (VSCode or JupyterLab). Make the following changes:
+Open Iceberg_TimeTravel_PySpark.ipynb. Update your username and the Storage Location variables and run each cell in the notebook.
 
-* At line 46, edit the "sessionName" parameter with your Session Name from the above CLI command.
-* At line 48, edit the "storageLocation" parameter with the following: <Enter Cloud Storage Location Here>
-* At line 49, edit the "username" parameter with your assigned username.
+```
+storageLocation = s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
+username = userXXX
+```
 
-Now run "prototype.py" and observe outputs.
-
-![alt text](../../img/cde_spark_connect_vscode.png)
+![alt text](../../img/runnnotebook-1.png)
 
 #### Prototype the Spark & Iceberg Application as a Spark Submit
 
-On your terminal run the following commands. Make sure to edit the "vcluster-ednpoint" and "arg" options to reflect the DEV CDE Virtual Cluster where you will run the spark-submit, and the corresponding Cloud Storage location.
+On your terminal run the following commands to run your code as a Spark Submit. Make sure to edit the "vcluster-ednpoint" option according to your Virtual Cluster's Jobs API URL.
 
 ```
 cde spark submit \
   pyspark-app.py \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1 \
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1 \
   --executor-memory "4g" \
   --executor-cores 2 \
-  s3a://go01-demo/data/cde-123-hol
+  s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
 ```
 
-You are ready to transform the Spark Submit into a CDE Spark Job.
+Wait for the application to run and validate results in the terminal.
+
+![alt text](../../img/cde-spark-submit.png)
+
+You are now ready to convert the Spark Submit into a CDE Spark Job.
 
 ## 3. Sync with CDE repository
 
-CDE Repositories are used to import files and dependencies into Virtual Clusters by cloning from git repositories. Next, you will create a CDE repository and use its content to create the CDE Spark Job definition.
-
-First, delete the job and repository in case they have been created before.
-
-```
-cde job delete \
-  --name cde_spark_job_user001 \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
-
-cde repository delete \
-  --name sparkAppRepoDevUser001 \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
-```
-
-Now create the CDE Repository and sync it with the Git Repository.
+CDE Repositories are used to import files and dependencies into Virtual Clusters by cloning git repositories. Create your CDE Repository and sync it with the Git Repository. Make sure to update the name and vcluster-endpoint parameters before executing the CLI commands.
 
 ```
 cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
   --url https://github.com/pdefusco/CDE_123_HOL.git \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 
 cde repository sync --name sparkAppRepoDevUser001 \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
+
+![alt text](../../img/repos.png)
+
+![alt text](../../img/cde-repos-1.png)
+
+![alt text](../../img/cde-repos-2.png)
 
 ## 4. Deploy using CLI
 
 Now create a CDE Spark job using the CDE Repository as a dependency.
 
 The files in the Repository are mounted and reachable by the Application at runtime.
+
+Before executing the CLI commands, update the name, resource, and vcluster endpoint options according to your assigned username.
 
 ```
 cde job create --name cde_spark_iceberg_job_user001 \
@@ -168,14 +160,26 @@ cde job create --name cde_spark_iceberg_job_user001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1 \
-  --arg s3a://go01-demo/data/cde-123-hol
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1 \
+  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
 
 cde job run --name cde_spark_iceberg_job_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
+
+![alt text](../../img/cde-job-1.png)
+
+![alt text](../../img/cde-job-2.png)
+
+![alt text](../../img/cde-job-3.png)
+
+![alt text](../../img/cde-job-4.png)
+
+![alt text](../../img/cde-job-5.png)
+
+![alt text](../../img/cde-job-6.png)
 
 ## 5. Monitor
 
@@ -184,23 +188,29 @@ Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
 ```
 # List all Jobs in the Virtual Cluster:
 cde job list \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 
 # List all jobs in the Virtual Cluster whose name is "cde_spark_job_user001":
 cde job list \
   --filter 'name[eq]cde_spark_iceberg_job_user001' \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 
 # List all jobs in the Virtual Cluster whose job application file name equals "pyspark-app.py":
 cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 
 # List all runs for Job "cde_spark_job_user001":
 cde run list \
   --filter 'job[eq]cde_spark_iceberg_job_user001' \
-  --vcluster-endpoint https://4spcd2c8.cde-ntvvr5hx.go01-dem.ylcu-atmi.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
+
+![alt text](../../img/cde-job-list-1.png)
+
+![alt text](../../img/cde-job-list-2.png)
+
+![alt text](../../img/cde-job-list-3.png)
 
 ## Summary and Next Steps
 
