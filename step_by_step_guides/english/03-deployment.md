@@ -112,3 +112,35 @@ cde job create --name airflow-orchestration-user001 \
 There is no need to manually trigger the Airflow job run. The DAG parameters already include a schedule. Upon creation, the CDE Airflow Job will run shortly. You can follow along progress in the Job Runs UI.
 
 ![alt text](../../img/jobs-completed.png)
+
+You can use the Airflow UI to inspect your pipelines. From the Virtual Cluster Details page, open the Airflow UI and then locate your Airflow DAG.
+
+![alt text](../../img/vc-details.png)
+
+![alt text](../../img/open-your-dag.png)
+
+![alt text](../../img/dag-runs-page.png)
+
+Airflow provides a variety of diagrams, charts, and visuals to monitor your executions across tasks, dags, and operators. Run your Airflow DAG multiple times from the CDE Jobs UI and come back to the Airflow UI to inspect your tasks across different runs, and more.
+
+![alt text](../../img/trigger-dag.png)
+
+![alt text](../../img/airflow-details.png)
+
+![alt text](../../img/airflow-graphs.png)
+
+![alt text](../../img/airflow-task-compare.png)
+
+CDE Airflow supports 3rd party providers i.e. external packages that extend Apache Airflow’s functionality by adding integrations with other systems, services, and tools such as AWS, Google Cloud, Microsoft Azure, databases, message brokers, and many other services. Providers are open sourced and can be installed separately based on the specific needs of a project.
+
+Select the GitHub List Repos Task, open the logs and notice the output is provided. In this particular task you used the GitHub Operator to list repositories from a GitHub account.
+
+![alt text](../../img/airflow-github-list-repos.png)
+
+An Airflow Connection was created ahead of time to connect to this account via GitHub token. Open the Connections page to explore more connections.
+
+![alt text](../../img/airflow-github-list-repos.png)
+
+The GitHub Operator was installed in the Virtual Cluster's Airflow Python environment. Navigate back to the Virtual Cluster Details page, open the Airflow tab and validate the installed packages.
+
+![alt text](../../img/airflow-installed-packages.png)
