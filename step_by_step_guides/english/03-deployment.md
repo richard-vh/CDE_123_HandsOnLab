@@ -91,8 +91,6 @@ cde job create --name cde_spark_job_gold_user001 \
   --vcluster-endpoint https://2cbcn8vs.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
 
-![alt text](../../img/create-jobs.png)
-
 In your editor, open the Airflow DAG "004_airflow_dag_git" and edit your username variable at line 54.
 
 ![alt text](../../img/username-dag.png)
@@ -107,8 +105,10 @@ cde job create --name airflow-orchestration-user001 \
   --vcluster-endpoint https://2cbcn8vs.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
 
-![alt text](../../img/all-jobs-done.png)
+![alt text](../../img/jobs-cde.png)
 
 ![alt text](../../img/jobs-in-ui.png)
 
 There is no need to manually trigger the Airflow job run. The DAG parameters already include a schedule. Upon creation, the CDE Airflow Job will run shortly. You can follow along progress in the Job Runs UI.
+
+![alt text](../../img/jobs-completed.png)
