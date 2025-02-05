@@ -2,17 +2,12 @@
 
 ## Contents
 
-1. [Test jobs with Spark Connect from local](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  
-2. [Once ready for operationalization push to git](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#2-push-to-git).
-3. [Sync with CDE repository](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#3-sync-with-cde-repository)
-4. [Deploy using CLI](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#4-deploy-using-cli)
-5. [Monitor](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#5-monitor)
+1. [Spark Application Development](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  
+2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#2-push-to-git).
 
 We will prototype and test the Iceberg Merge Into and Incremental Read Operations.
 
-## Instructions
-
-## 1. Test jobs in CDE Session from local
+## Lab 1. Spark Application Development
 
 #### Pull the Docker Container and Launch the IDE
 
@@ -127,7 +122,7 @@ Wait for the application to run and validate results in the terminal.
 
 You are now ready to convert the Spark Submit into a CDE Spark Job.
 
-## 3. Sync with CDE repository
+## Lab 2. CDE Repositories, Jobs, and Monitoring
 
 CDE Repositories are used to import files and dependencies into Virtual Clusters by cloning git repositories. Create your CDE Repository and sync it with the Git Repository. Make sure to update the name and vcluster-endpoint parameters before executing the CLI commands.
 
