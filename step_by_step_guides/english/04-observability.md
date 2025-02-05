@@ -2,6 +2,8 @@
 
 ![alt text](../../img/observability-slide.png)
 
+![alt text](../../img/catalog-slide.png)
+
 ## Contents
 
 5. [Monitor Jobs with Cloudera Observability and CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
