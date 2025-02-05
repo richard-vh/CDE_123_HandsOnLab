@@ -57,11 +57,11 @@ loading_icon_job "Setup Job in Progress"
 echo "CREATE SPARK FILES SHARED RESOURCE"
 cde resource delete --name Spark-Files-Shared
 cde resource create --type files --name Spark-Files-Shared
-cde resource upload --name Spark-Files-Shared --local-path cde_spark_jobs/parameters.conf --local-path cde_spark_jobs/utils.py
+cde resource upload --name Spark-Files-Shared --local-path de-pipeline/spark/parameters.conf --local-path de-pipeline/spark/utils.py
 echo "CREATE AIRFLOW FILES SHARED RESOURCE"
 cde resource delete --name Airflow-Files-Shared
 cde resource create --type files --name Airflow-Files-Shared
-cde resource upload --name Airflow-Files-Shared --local-path cde_airflow_jobs/my_file.txt
+cde resource upload --name Airflow-Files-Shared --local-path de-pipeline/airflow/my_file.txt
 echo "CREATE PYTHON ENVIRONMENT SHARED RESOURCE"
 cde resource delete --name Python-Env-Shared
 cde resource create --type python-env --name Python-Env-Shared

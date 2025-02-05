@@ -123,6 +123,8 @@ Wait for the application to run and validate results in the terminal.
 
 ![alt text](../../img/cde-spark-submit.png)
 
+![alt text](../../img/cli-submit.png)
+
 You are now ready to convert the Spark Submit into a CDE Spark Job.
 
 ## 3. Sync with CDE repository
