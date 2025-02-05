@@ -139,7 +139,11 @@ Select the GitHub List Repos Task, open the logs and notice the output is provid
 
 An Airflow Connection was created ahead of time to connect to this account via GitHub token. Open the Connections page to explore more connections.
 
-![alt text](../../img/airflow-github-list-repos.png)
+![alt text](../../img/airflow-connections.png)
+
+![alt text](../../img/airflow-connections-2.png)
+
+![alt text](../../img/airflow-connections-3.png)
 
 The GitHub Operator was installed in the Virtual Cluster's Airflow Python environment. Navigate back to the Virtual Cluster Details page, open the Airflow tab and validate the installed packages.
 
