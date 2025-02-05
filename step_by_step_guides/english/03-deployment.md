@@ -57,7 +57,7 @@ Create the CDE Spark jobs. Notice these are categorized into Bronze, Silver and 
 cde job create --name cde_spark_job_bronze_user001 \
   --type spark \
   --arg user001 \
-  --arg s3a://go01-demo/data/cde-123-hol \
+  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
@@ -82,7 +82,7 @@ cde job create --name cde_spark_job_silver_user001 \
 cde job create --name cde_spark_job_gold_user001 \
   --type spark \
   --arg user001 \
-  --arg s3a://go01-demo/data/cde-123-hol \
+  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
@@ -90,6 +90,8 @@ cde job create --name cde_spark_job_gold_user001 \
   --application-file de-pipeline/spark/003_Lakehouse_Gold.py\
   --vcluster-endpoint https://2cbcn8vs.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
+
+![alt text](../../img/create-jobs.png)
 
 In your editor, open the Airflow DAG "004_airflow_dag_git" and edit your username variable at line 54.
 
@@ -104,3 +106,9 @@ cde job create --name airflow-orchestration-user001 \
   --dag-file de-pipeline/airflow/004_airflow_dag_git.py\
   --vcluster-endpoint https://2cbcn8vs.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
 ```
+
+![alt text](../../img/all-jobs-done.png)
+
+![alt text](../../img/jobs-in-ui.png)
+
+There is no need to manually trigger the Airflow job run. The DAG parameters already include a schedule. Upon creation, the CDE Airflow Job will run shortly. You can follow along progress in the Job Runs UI.
