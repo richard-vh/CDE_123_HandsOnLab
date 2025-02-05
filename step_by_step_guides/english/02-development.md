@@ -1,5 +1,7 @@
 # Spark Application Development in CDE
 
+![alt text](../../img/spark-connect-slide.png)
+
 ## Contents
 
 1. [Spark Application Development](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  

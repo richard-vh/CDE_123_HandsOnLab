@@ -1,5 +1,7 @@
 # Deployment & Orchestration with Airflow in CDE
 
+![alt text](../../img/cicd-deployment.png)
+
 ## Contents
 
 3. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/03-deployment.md#6-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
