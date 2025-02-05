@@ -4,8 +4,6 @@
 
 5. [Monitor Jobs with Cloudera Observability and CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
 6. [Spark Job Governance with CDP Data Catalog](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-6-spark-job-governance-with-cdp-data-catalog)
-* [Summary](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#summary)
-* [Useful Links and Resources](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#useful-links-and-resources)
 
 ## Lab 5. Monitoring Jobs with Cloudera Observability and CDE
 
