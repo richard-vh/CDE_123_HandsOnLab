@@ -1,11 +1,8 @@
 # CDE Observability Demo Setup
 
-Run the following CDE CLI commands.
+Run the following CDE CLI commands to set up the demo in your CDE Virtual Cluster.
 
 ```
-cde job delete \
-  --name skewJob
-
 cde resource create \
   --type files \
   --name skewAppResource
@@ -29,3 +26,5 @@ cde job create \
 cde job run \
   --name skewJob
 ```
+
+Let the job run for a few hours and then navigate to Observability to observe results. 

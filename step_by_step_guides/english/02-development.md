@@ -4,8 +4,8 @@
 
 ## Contents
 
-1. [Spark Application Development](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#1-test-jobs-in-cde-session-from-local).  
-2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_SparkConnect?tab=readme-ov-file#2-push-to-git).
+1. [Spark Application Development](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
+2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
 
 We will prototype and test the Iceberg Merge Into and Incremental Read Operations.
 
@@ -101,7 +101,7 @@ storageLocation = s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
 username = userXXX
 ```
 
-![alt text](../../img/runnnotebook-1.png)
+![alt text](../../img/runnotebook-1.png)
 
 #### Prototype the Spark & Iceberg Application as a Spark Submit
 

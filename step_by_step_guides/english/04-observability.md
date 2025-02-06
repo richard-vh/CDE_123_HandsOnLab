@@ -11,9 +11,7 @@
 
 ## Lab 5. Monitoring Jobs with Cloudera Observability and CDE
 
-CDE provides built-in Job observability feature including a Job Runs UI, the Airflow UI, and the ability to download job metadata and logs via the CDE API and CLI.
-
-Cloudera Observability is a Cloudera service that helps you interactively understand your environment, data services, workloads, clusters, and resources across all compute services in a CDP Environment - ***including CDE***.
+CDE provides built-in Job observability feature including a Job Runs UI, the Airflow UI, and the ability to download job metadata and logs via the CDE API and CLI. In addition, CDE users can leverage Cloudera Observaibility, a Cloudera service that helps you interactively understand your environment, data services, workloads, clusters, and resources across all compute services in a CDP Environment.
 
 When a workload completes, diagnostic information about the job or query and the cluster that processed them is collected by Telemetry Publisher and sent to Cloudera Observability, so you can optimize your queries and pipelines through:
 
@@ -28,27 +26,9 @@ In addition, Cloudera Observability also enables you to:
 * Enable the daily delivery of your cluster statistics to your email address that help you to track, compare, and monitor without having to log in to the cluster.
 * Break down your workload metrics into more meaningful views for your business requirements that help you analyze specific workload criteria. For example, you can analyze how queries that access a particular database or that use a specific resource pool are performing against your SLAs. Or you can examine how all the queries are performing on your cluster that are sent by a specific user.
 
-#### Monitor Jobs in CDE
-
-Navigate to the CDE ObservabilityLabs virtual cluster. Open the Jobs Runs UI and notice that this cluster has already been configured with an Airflow pipeline composed of three Spark Jobs that incrementally load a fresh batch of data every five minutes.
-
-Select the latest Job Run of the job named "airflow-orchestration-pauldefusco-mfct", open the "Logs" tab and explore each Airflow Task output. Each task corresponds to a CDEJobRunOperator in the Airflow DAG code.
-
-![alt text](../../img/new_airflow_run_1.png)
-
-Next, navigate back to the Job Runs page and explore the latest Job Run for the "iceberg_mergeinto-pauldefusco-mfct" job. Explore the Configuration, Logs, and Spark UI.
-
-* The Configuration tab stores Spark Job dependencies and configurations.
-* The Logs tab provides access to Spark Application logs.
-* The Spark UI provides visibility into the Spark Job run.
-
-All the above are persisted in the CDE Job Runs UI so that CDE Data Engineers can easily validate past job runs and perform complex troubleshooting.
-
-![alt text](../../img/new_airflow_run_2.png)
-
 #### Monitor Jobs in CDP Observability
 
-Navigate out of CDE back to the CDP Home Page and then open CDP Observability. Expand the ObservabilityLabs cluster and then the "Spark" tab.
+Navigate out of CDE back to the CDP Home Page and then open CDP Observability. Select and expand your Virtual Cluster and then the "Spark" tab.
 
 ![alt text](../../img/new_obs_1.png)
 
