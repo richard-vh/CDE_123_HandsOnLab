@@ -115,7 +115,7 @@ There is no need to manually trigger the Airflow job run. The DAG parameters alr
 
 You can use the Airflow UI to inspect your pipelines. From the Virtual Cluster Details page, open the Airflow UI and then locate your Airflow DAG.
 
-![alt text](../../img/vc-details.png)
+![alt text](../../img/vcdetails.png)
 
 ![alt text](../../img/open-your-dag.png)
 
