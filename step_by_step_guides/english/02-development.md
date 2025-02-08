@@ -69,7 +69,7 @@ pip3 install pyspark-3.5.1.tar.gz
 
 #### Launch a CDE Spark Connect Session
 
-Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it doesn't collide with other users' sessions.
+Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it doesn't collide with other users' sessions. You will be prompted for your Workload Password. This is the same password you used to log into CDP.
 
 ```
 cde session create \
@@ -94,11 +94,16 @@ In the Sessions UI, validate the Session is Running.
 
 You are now ready to connect to the CDE Session from your local JupyterLab IDE using Spark Connect.
 
-Open Iceberg_TimeTravel_PySpark.ipynb. Update your username and the Storage Location variables and run each cell in the notebook.
+Open Iceberg_TimeTravel_PySpark.ipynb. Update the Spark Connect session name, the username and the Storage Location variables in the first two cells. Then run each cell in the notebook.
+
+```
+from cde import CDESparkConnectSession
+spark = CDESparkConnectSession.builder.sessionName('<your-spark-connect-session-name-here>').get()
+```
 
 ```
 storageLocation = s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
-username = userXXX
+username = <your-cdp-workload-username-here>
 ```
 
 ![alt text](../../img/runnotebook-1.png)
