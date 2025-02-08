@@ -115,7 +115,7 @@ On your terminal run the following commands to run your code as a Spark Submit. 
 ```
 cde spark submit \
   pyspark-app.py \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1 \
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
   --executor-memory "4g" \
   --executor-cores 2 \
   s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
@@ -137,10 +137,10 @@ CDE Repositories are used to import files and dependencies into Virtual Clusters
 cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
   --url https://github.com/pdefusco/CDE_123_HOL.git \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 
 cde repository sync --name sparkAppRepoDevUser001 \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
 ![alt text](../../img/repos.png)
@@ -164,7 +164,7 @@ cde job create --name cde_spark_iceberg_job_user001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1 \
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
   --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
 ```
 
@@ -172,7 +172,7 @@ cde job create --name cde_spark_iceberg_job_user001 \
 cde job run --name cde_spark_iceberg_job_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
 ![alt text](../../img/cde-job-1.png)
@@ -194,7 +194,7 @@ Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
 ```
 # List all Jobs in the Virtual Cluster:
 cde job list \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
 ![alt text](../../img/cde-job-list-1.png)
@@ -203,12 +203,12 @@ cde job list \
 # List all jobs in the Virtual Cluster whose name is "cde_spark_job_user001":
 cde job list \
   --filter 'name[eq]cde_spark_iceberg_job_user001' \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 
 # List all jobs in the Virtual Cluster whose job application file name equals "pyspark-app.py":
 cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
 ![alt text](../../img/cde-job-list-2.png)
@@ -217,7 +217,7 @@ cde job list \
 # List all runs for Job "cde_spark_job_user001":
 cde run list \
   --filter 'job[eq]cde_spark_iceberg_job_user001' \
-  --vcluster-endpoint https://274lmxt4.cde-q7kss7bw.cde-hol.vayb-xokg.cloudera.site/dex/api/v1
+  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
 ![alt text](../../img/cde-job-list-3.png)
