@@ -98,14 +98,7 @@ ifSkew = random.randint(1, 100)
     except Exception as e:
         print(f"Error {e}")"""
 
-if ifSkew < 8:
-    # AQE Disabled
-    spark.conf.set("spark.sql.adaptive.enabled", False)
-    df1 = generate_skewed_data(1000000)
-    df2 = generate_skewed_data(1000000)
-    print("Skewed Data Created")
-
-elif ifSkew < 28:
+if ifSkew < 20:
     # Create a skewed dataset
     df1 = generate_skewed_data(1000000)
     df2 = generate_skewed_data(1000000)
@@ -120,10 +113,14 @@ else:
 df1.printSchema()
 df2.printSchema()
 
+df1.show()
+df2.show()
+
 # Perform a large shuffle
 def large_shuffle_example(df1, df2):
     # Join df1 and df2 on the 'id' column (this will trigger a large shuffle)
-    joined_df = df1.drop("amount").join(df2, "id", "inner")
+    joined_df = df1.drop("amount").join(df2, "id", "outer")
+    joined_df.show()
 
     # After the join, perform a groupBy operation on the 'id' column (another shuffle)
     shuffled_df = joined_df.groupBy("id").agg(

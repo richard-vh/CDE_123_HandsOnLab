@@ -4,7 +4,7 @@
 
 ![alt text](../../img/catalog-slide.png)
 
-## Contents
+## Content
 
 5. [Monitor Jobs with Cloudera Observability and CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
 6. [Spark Job Governance with CDP Data Catalog](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-6-spark-job-governance-with-cdp-data-catalog)
@@ -26,7 +26,7 @@ In addition, Cloudera Observability also enables you to:
 * Enable the daily delivery of your cluster statistics to your email address that help you to track, compare, and monitor without having to log in to the cluster.
 * Break down your workload metrics into more meaningful views for your business requirements that help you analyze specific workload criteria. For example, you can analyze how queries that access a particular database or that use a specific resource pool are performing against your SLAs. Or you can examine how all the queries are performing on your cluster that are sent by a specific user.
 
-#### Monitor Jobs in CDP Observability
+#### Identify the Cause of slower than usual CDE Spark Jobs in CDP Observability
 
 Navigate out of CDE back to the CDP Home Page and then open CDP Observability. Select and expand the Org1 Virtual Cluster and then the "Spark" tab. Look for the "LargeShuffleExample" Spark Application and identify jobs that take longer than usual. How often is the job running slower than usual?
 
@@ -43,6 +43,24 @@ Select the job run with the highest duration and explore the Execution Details t
 ![alt text](../../img/details-2.png)
 
 ![alt text](../../img/details-3.png)
+
+It looks like roughly 20% of the time the application is performing an abnormal Spark Shuffle. Next, open the Spark Application code and try to identify why that's happening. The code is located in ["observability/skewApp.py"](https://github.com/pdefusco/CDE_123_HOL/blob/main/observability/skewApp.py)
+
+#### Identify the Cause of a Failed CDE Spark Job in CDP Observability
+
+Now switch to the Org2 Virtual Cluster in Observability and open the job failures view. Identify a failed run of job "ObsDemo" and explore the error trace.
+
+![alt text](../../img/obs-failed-1.png)
+
+![alt text](../../img/obs-failed-2.png)
+
+![alt text](../../img/obs-failed-3.png)
+
+![alt text](../../img/obs-failed-4.png)
+
+![alt text](../../img/obs-failed-5.png)
+
+It looks like your Spark Job failed due to insufficient resources. In particular, one of your partitions has too much data due to skew. In order to rerun the job successfully, you could just increase Spark Executor memory and cores, or you could optimize your code to better handle data skew.  
 
 ## Lab 6. Spark Job Governance with CDP Data Catalog
 
