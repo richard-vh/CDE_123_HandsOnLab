@@ -28,21 +28,21 @@ In addition, Cloudera Observability also enables you to:
 
 #### Monitor Jobs in CDP Observability
 
-Navigate out of CDE back to the CDP Home Page and then open CDP Observability. Select and expand your Virtual Cluster and then the "Spark" tab.
+Navigate out of CDE back to the CDP Home Page and then open CDP Observability. Select and expand the Org1 Virtual Cluster and then the "Spark" tab. Look for the "LargeShuffleExample" Spark Application and identify jobs that take longer than usual. How often is the job running slower than usual?
 
-![alt text](../../img/new_obs_1.png)
+![alt text](../../img/obs-main-page.png)
 
-![alt text](../../img/new_obs_2.png)
+![alt text](../../img/obs-slow-jobs.png)
 
-![alt text](../../img/new_obs_3.png)
+![alt text](../../img/obs-examine-job.png)
 
-Explore aggregate job trends. Notice that jobs progressively take longer and longer to execute. This is because data is being incrementally loaded into the Iceberg table with a Merge Into operation that operates on a table that is  becoming larger and larger.
+Select the job run with the highest duration and explore the Execution Details tab to find Spark Job and Stage level information, and the Baseline tab to find granular Spark execution metrics. In the Baseline tab, click on the "Show Abnormal Metrics" icon to identify potential problems with your particular job run.
 
-Select the job with the highest duration and explore the Execution Details tab to find Spark Job and Stage level information, and the Baseline tab to find granular Spark execution metrics. In the Baseline tab, click on the "Show Abnormal Metrics" icon to identify potential problems with your particular job run.
+![alt text](../../img/details-1.png)
 
-![alt text](../../img/new_obs_4.png)
+![alt text](../../img/details-2.png)
 
-![alt text](../../img/new_obs_5.png)
+![alt text](../../img/details-3.png)
 
 ## Lab 6. Spark Job Governance with CDP Data Catalog
 
