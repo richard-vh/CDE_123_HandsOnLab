@@ -60,7 +60,7 @@ Now switch to the Org2 Virtual Cluster in Observability and open the job failure
 
 ![alt text](../../img/obs-failed-5.png)
 
-It looks like your Spark Job failed due to insufficient resources. In particular, one of your partitions has too much data due to skew. In order to rerun the job successfully, you could just increase Spark Executor memory and cores, or you could optimize your code to better handle data skew.  
+It looks like your Spark Job failed due to insufficient resources. In particular, one of your partitions has too much data due to skew. In order to rerun the job successfully, you could just increase Spark Executor memory and cores, or you could improve the code to better handle data skew.  
 
 ## Lab 6. Spark Job Governance with CDP Data Catalog
 
