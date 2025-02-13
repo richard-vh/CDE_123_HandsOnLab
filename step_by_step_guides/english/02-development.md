@@ -228,7 +228,7 @@ A Spark Connect Session is a type of CDE Session that exposes the Spark Connect 
 
 Spark Connect allows you to connect remotely to the Spark clusters. Spark Connect is an API that uses the DataFrame API and unresolved logical plans as the protocol.
 
-In this article we reviewed an end to end developer framework using Spark Connect, the CDE CLI, and Apache Iceberg. You might also find the following articles and demos relevant:
+In this section of the labs we reviewed an end to end developer framework using Spark Connect, the CDE CLI, and Apache Iceberg. You might also find the following articles and demos relevant:
 
 * [Installing the CDE CLI](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli.html)
 * [Simple Introduction to the CDE CLI](https://github.com/pdefusco/CDE_CLI_Simple)

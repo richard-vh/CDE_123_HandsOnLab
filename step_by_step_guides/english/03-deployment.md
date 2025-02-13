@@ -148,3 +148,15 @@ An Airflow Connection was created ahead of time to connect to this account via G
 The GitHub Operator was installed in the Virtual Cluster's Airflow Python environment. Navigate back to the Virtual Cluster Details page, open the Airflow tab and validate the installed packages.
 
 ![alt text](../../img/airflow-installed-packages.png)
+
+## Summary and Next Steps
+
+Apache Airflow is an open-source workflow automation and orchestration tool designed for scheduling, monitoring, and managing complex data pipelines. It allows users to define workflows as Directed Acyclic Graphs (DAGs) using Python, enabling flexibility, scalability, and automation in data processing. With built-in integrations, a user-friendly web interface, and robust task execution capabilities, Airflow is widely used in data engineering, ETL processes, and machine learning pipelines.
+
+CDE embeds Apache Airflow at the CDE Virtual Cluster level. It is automatically deployed for the CDE user during CDE Virtual Cluster creation and requires no maintenance on the part of the CDE Admin.
+
+In this section of the labs we deployed a Spark and Iceberg pipeline with git and CDE repositories, and created a job orchestration pipeline with Airflow. You might also find the following articles and demos relevant:
+
+* [CDE Airflow Documentation](https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/cdppvc-data-migration-spark/topics/cdp-migration-spark-cde-airflow-overview.html)
+* [Using Airflow in CDE](https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/cdppvc-data-migration-spark/topics/cdp-migration-spark-cde-using-airflow.html)
+* [Creating a CDE Repository in CDE](https://docs.cloudera.com/data-engineering/1.5.4/manage-jobs/topics/cde-git-repo.html)
