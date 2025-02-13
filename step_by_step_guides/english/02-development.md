@@ -165,7 +165,8 @@ cde job create --name cde_spark_iceberg_job_user001 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
-  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
+  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol \
+  --arg user001
 ```
 
 ```

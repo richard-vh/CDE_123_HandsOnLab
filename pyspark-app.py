@@ -49,7 +49,8 @@ spark = SparkSession \
     .getOrCreate()
 
 storageLocation = sys.argv[1] #"s3a://go01-demo/data"
-username = "user001"
+username = sys.argv[2] #user001
+#username = "user001"
 
 ### LOAD HISTORICAL TRANSACTIONS FILE FROM CLOUD STORAGE
 transactionsDf = spark.read.json("{0}/trans/{1}/rawtransactions".format(storageLocation, username))
