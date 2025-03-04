@@ -56,7 +56,7 @@ Create the CDE Spark jobs. Notice these are categorized into Bronze, Silver and 
 ```
 cde job create --name cde_spark_job_bronze_user001 \
   --type spark \
-  --arg user001 \
+  --arg <your-cdp-workload-username-here> \
   --arg <your-storage-location-here> \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
@@ -69,7 +69,7 @@ cde job create --name cde_spark_job_bronze_user001 \
 ```
 cde job create --name cde_spark_job_silver_user001 \
   --type spark \
-  --arg user001 \
+  --arg <your-cdp-workload-username-here> \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
@@ -81,8 +81,8 @@ cde job create --name cde_spark_job_silver_user001 \
 ```
 cde job create --name cde_spark_job_gold_user001 \
   --type spark \
-  --arg user001 \
-  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol \
+  --arg <your-cdp-workload-username-here> \
+  --arg <your-storage-location-here> \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
