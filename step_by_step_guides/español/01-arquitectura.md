@@ -56,8 +56,6 @@ Un clúster de autoescalado individual con rangos predefinidos de CPU y memoria.
 * JDBC/SparkSQL (Disponible en octubre de 2023 con CDE 1.20)
 * IDE (Disponible en octubre de 2023 con CDE 1.20)
 
-Aquí tienes la traducción al español:
-
 Los clústeres Core se recomiendan como entornos de Producción. En cambio, los clústeres All Purpose están diseñados para ser utilizados en entornos de Desarrollo y Pruebas.  
 Para obtener más información sobre las versiones CDE 1.19.1 y 1.19.2, visita esta página en la [documentación](https://docs.cloudera.com/data-engineering/cloud/release-notes/topics/cde-whats-new-1.19.html).
 
