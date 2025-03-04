@@ -2,9 +2,9 @@
 
 ## About the CDE Lab
 
-In these Labs you will gain hands-on experience the Cloudera Data Engineering Service. In this excercise you will:
+In these Labs you will gain hands-on experience the Cloudera Data Engineering Service. You will:
 
-1. Develop a PySpark and Iceberg Application with Spark 3.5 connecting to a Spark Virtual Cluster via Spark Connect using the VSCode IDE.
+1. Develop a PySpark and Iceberg Application connecting to a Spark Virtual Cluster via Spark Connect using the JupyterLab IDE.
 2. Prototype your Spark Application in a dedicated CDE DEV environment.
 3. Use git to back up your code and push it to a dedicated CDE PRD environment.
 4. Create an Airflow Pipeline to orchestrate multiple Spark Applications.
@@ -28,4 +28,4 @@ Detailed instructions are provided in the [step_by_step_guides](https://github.c
 
 ## Setup Instructions
 
-The HOL requires data and CDE dependencies (e.g. shared Files, Pyhton, Docker Resource) to be created before the event. The attached [Setup Guide](https://github.com/pdefusco/CDE_123_HOL/blob/main/setup/README.md) provides instructions for meeting these requirements.
+The HOL requires data and CDE dependencies (e.g. shared Files, Pyhton, Docker Resource) to be created before the event. The attached [Setup Guide](https://github.com/pdefusco/CDE_123_HOL/blob/main/setup/README.md) provides instructions for completing these requirements.
