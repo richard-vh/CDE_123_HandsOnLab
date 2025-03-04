@@ -1,33 +1,33 @@
-# Deployment & Orchestration with Airflow in CDE
+# Despliegue y Orquestación con Airflow en CDE
 
 ![alt text](../../img/cicd-deployment.png)
 
-## Contents
+## Contenido
 
-3. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-3-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
-4. [Build Orchestration Pipeline with Airflow](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-4-build-orchestration-pipeline-with-airflow)
+3. [Promover a un entorno superior usando la API replicando el repositorio y redeplegando](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-3-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
+4. [Construir un pipeline de orquestación con Airflow](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-4-build-orchestration-pipeline-with-airflow)
 
-## Lab 3. Promote to higher env using API by replicating repo and redeploy
+## Laboratorio 3. Promover a un entorno superior usando la API replicando el repositorio y redeplegando
 
-Now that the job has succeeded, deploy it into your PRD cluster.
+Ahora que el trabajo ha tenido éxito, desplíegalo en tu clúster PRD.
 
-Create and sync the same Git repo from the PRD Cluster. From now on, run the following CLI commands with your PRD's cluster's Jobs API URL as the vcluster-endpoint parameter.
+Crea y sincroniza el mismo repositorio Git desde el clúster PRD. A partir de ahora, ejecuta los siguientes comandos CLI con la URL de la API de Jobs de tu clúster PRD como el parámetro vcluster-endpoint.
 
 ```
 cde repository create \
   --name sparkAppRepoPrdUser001 \
   --branch main \
   --url https://github.com/pdefusco/CDE_123_HOL.git \
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
 ```
 cde repository sync \
   --name sparkAppRepoPrdUser001 \
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
-Then create a CDE Spark Job leveraging the CDE repository as a dependency.
+Luego, crea un trabajo Spark en CDE aprovechando el repositorio de CDE como una dependencia.
 
 ```
 cde job create --name cde_spark_job_prd_user001 \
@@ -36,84 +36,84 @@ cde job create --name cde_spark_job_prd_user001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here> \
-  --arg <your-storage-location-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí> \
+  --arg <tu-ubicación-de-almacenamiento-aquí>
 ```
 
 ```
 cde job run --name cde_spark_job_prd_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
 ![alt text](../../img/move-job.png)
 
-## Lab 4. Build Orchestration Pipeline with Airflow
+## Laboratorio 4. Construir un Pipeline de Orquestación con Airflow
 
-Create the CDE Spark jobs. Notice these are categorized into Bronze, Silver and Gold following a Lakehouse Data Architecture.
+Crea los trabajos Spark en CDE. Observa que estos están categorizados en Bronce, Plata y Oro siguiendo una Arquitectura de Datos Lakehouse.
 
 ```
 cde job create --name cde_spark_job_bronze_user001 \
   --type spark \
-  --arg <your-cdp-workload-username-here> \
-  --arg <your-storage-location-here> \
+  --arg <tu-nombre-de-usuario-cdp-aquí> \
+  --arg <tu-ubicación-de-almacenamiento-aquí> \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file de-pipeline/spark/001_Lakehouse_Bronze.py\
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
 ```
 cde job create --name cde_spark_job_silver_user001 \
   --type spark \
-  --arg <your-cdp-workload-username-here> \
+  --arg <tu-nombre-de-usuario-cdp-aquí> \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file de-pipeline/spark/002_Lakehouse_Silver.py\
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
 ```
 cde job create --name cde_spark_job_gold_user001 \
   --type spark \
-  --arg <your-cdp-workload-username-here> \
-  --arg <your-storage-location-here> \
+  --arg <tu-nombre-de-usuario-cdp-aquí> \
+  --arg <tu-ubicación-de-almacenamiento-aquí> \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file de-pipeline/spark/003_Lakehouse_Gold.py\
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
-In your editor, open the Airflow DAG "004_airflow_dag_git" and edit your username variable at line 54.
+En tu editor, abre el DAG de Airflow "004_airflow_dag_git" y edita la variable de tu nombre de usuario en la línea 54.
 
 ![alt text](../../img/username-dag.png)
 
-Then create the CDE Airflow job. This job will orchestrate your Lakehouse Spark jobs above.
+Luego, crea el trabajo de Airflow de CDE. Este trabajo orquestará tus trabajos Spark de Lakehouse mencionados anteriormente.
 
 ```
 cde job create --name airflow-orchestration-user001 \
   --type airflow \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --dag-file de-pipeline/airflow/004_airflow_dag_git.py\
-  --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
+  --vcluster-endpoint <tu-URL-de-api-jobs-PRD-vc-aquí>
 ```
 
 ![alt text](../../img/jobs-cde.png)
 
 ![alt text](../../img/jobs-in-ui.png)
 
-There is no need to manually trigger the Airflow job run. The DAG parameters already include a schedule. Upon creation, the CDE Airflow Job will run shortly. You can follow along progress in the Job Runs UI.
+No es necesario activar manualmente la ejecución del trabajo de Airflow. Los parámetros del DAG ya incluyen una programación. Al crearse, el trabajo de Airflow de CDE se ejecutará en breve. Puedes seguir el progreso en la interfaz de Job Runs.
 
 ![alt text](../../img/jobs-completed.png)
 
-You can use the Airflow UI to inspect your pipelines. From the Virtual Cluster Details page, open the Airflow UI and then locate your Airflow DAG.
+Puedes usar la interfaz de Airflow para inspeccionar tus pipelines. Desde la página de detalles del clúster virtual, abre la interfaz de Airflow y localiza tu DAG de Airflow.
 
 ![alt text](../../img/vcdetails.png)
 
@@ -121,7 +121,7 @@ You can use the Airflow UI to inspect your pipelines. From the Virtual Cluster D
 
 ![alt text](../../img/dag-runs-page.png)
 
-Airflow provides a variety of diagrams, charts, and visuals to monitor your executions across tasks, dags, and operators. Run your Airflow DAG multiple times from the CDE Jobs UI and come back to the Airflow UI to inspect your tasks across different runs, and more.
+Airflow proporciona una variedad de diagramas, gráficos y visuales para monitorear tus ejecuciones a través de tareas, dags y operadores. Ejecuta tu DAG de Airflow varias veces desde la interfaz de Jobs de CDE y vuelve a la interfaz de Airflow para inspeccionar tus tareas a través de diferentes ejecuciones, y mucho más.
 
 ![alt text](../../img/trigger-dag.png)
 
@@ -131,13 +131,13 @@ Airflow provides a variety of diagrams, charts, and visuals to monitor your exec
 
 ![alt text](../../img/airflow-task-compare.png)
 
-CDE Airflow supports 3rd party providers i.e. external packages that extend Apache Airflow’s functionality by adding integrations with other systems, services, and tools such as AWS, Google Cloud, Microsoft Azure, databases, message brokers, and many other services. Providers are open sourced and can be installed separately based on the specific needs of a project.
+CDE Airflow soporta proveedores de terceros, es decir, paquetes externos que amplían la funcionalidad de Apache Airflow añadiendo integraciones con otros sistemas, servicios y herramientas como AWS, Google Cloud, Microsoft Azure, bases de datos, brokers de mensajes y muchos otros servicios. Los proveedores son de código abierto y se pueden instalar por separado según las necesidades específicas de un proyecto.
 
-Select the GitHub List Repos Task, open the logs and notice the output is provided. In this particular task you used the GitHub Operator to list repositories from a GitHub account.
+Selecciona la tarea GitHub List Repos, abre los registros y observa que se proporciona la salida. En esta tarea en particular utilizaste el GitHub Operator para listar repositorios desde una cuenta de GitHub.
 
 ![alt text](../../img/airflow-github-list-repos.png)
 
-An Airflow Connection was created ahead of time to connect to this account via GitHub token. Open the Connections page to explore more connections.
+Se creó una conexión de Airflow de antemano para conectarse a esta cuenta mediante un token de GitHub. Abre la página de Conexiones para explorar más conexiones.
 
 ![alt text](../../img/airflow-connections.png)
 
@@ -145,18 +145,18 @@ An Airflow Connection was created ahead of time to connect to this account via G
 
 ![alt text](../../img/airflow-connections-3.png)
 
-The GitHub Operator was installed in the Virtual Cluster's Airflow Python environment. Navigate back to the Virtual Cluster Details page, open the Airflow tab and validate the installed packages.
+El GitHub Operator fue instalado en el entorno Python de Airflow del Clúster Virtual. Regresa a la página de detalles del Clúster Virtual, abre la pestaña de Airflow y valida los paquetes instalados.
 
 ![alt text](../../img/airflow-installed-packages.png)
 
-## Summary and Next Steps
+## Resumen y Próximos Pasos
 
-Apache Airflow is an open-source workflow automation and orchestration tool designed for scheduling, monitoring, and managing complex data pipelines. It allows users to define workflows as Directed Acyclic Graphs (DAGs) using Python, enabling flexibility, scalability, and automation in data processing. With built-in integrations, a user-friendly web interface, and robust task execution capabilities, Airflow is widely used in data engineering, ETL processes, and machine learning pipelines.
+Apache Airflow es una herramienta de automatización y orquestación de flujos de trabajo de código abierto diseñada para programar, monitorear y gestionar pipelines de datos complejos. Permite a los usuarios definir flujos de trabajo como Grafos Acíclicos Dirigidos (DAGs) usando Python, lo que permite flexibilidad, escalabilidad y automatización en el procesamiento de datos. Con integraciones integradas, una interfaz web fácil de usar y potentes capacidades de ejecución de tareas, Airflow se usa ampliamente en ingeniería de datos, procesos ETL y pipelines de aprendizaje automático.
 
-CDE embeds Apache Airflow at the CDE Virtual Cluster level. It is automatically deployed for the CDE user during CDE Virtual Cluster creation and requires no maintenance on the part of the CDE Admin.
+CDE integra Apache Airflow a nivel de CDE Virtual Cluster. Se despliega automáticamente para el usuario de CDE durante la creación del CDE Virtual Cluster y no requiere mantenimiento por parte del administrador de CDE.
 
-In this section of the labs we deployed a Spark and Iceberg pipeline with git and CDE repositories, and created a job orchestration pipeline with Airflow. You might also find the following articles and demos relevant:
+En esta sección de los laboratorios desplegamos un pipeline de Spark e Iceberg con repositorios git y CDE, y creamos un pipeline de orquestación de trabajos con Airflow. También podrías encontrar los siguientes artículos y demostraciones relevantes:
 
-* [CDE Airflow Documentation](https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/cdppvc-data-migration-spark/topics/cdp-migration-spark-cde-airflow-overview.html)
-* [Using Airflow in CDE](https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/cdppvc-data-migration-spark/topics/cdp-migration-spark-cde-using-airflow.html)
-* [Creating a CDE Repository in CDE](https://docs.cloudera.com/data-engineering/1.5.4/manage-jobs/topics/cde-git-repo.html)
+* [Documentación de CDE Airflow](https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/cdppvc-data-migration-spark/topics/cdp-migration-spark-cde-airflow-overview.html)
+* [Uso de Airflow en CDE](https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/cdppvc-data-migration-spark/topics/cdp-migration-spark-cde-using-airflow.html)
+* [Creación de un repositorio CDE en CDE](https://docs.cloudera.com/data-engineering/1.5.4/manage-jobs/topics/cde-git-repo.html)

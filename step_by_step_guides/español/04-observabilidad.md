@@ -1,34 +1,34 @@
-# Job Observability & Data Governance in CDP
+# Observabilidad de Trabajos y Gobernanza de Datos en CDP
 
 ![alt text](../../img/observability-slide.png)
 
 ![alt text](../../img/catalog-slide.png)
 
-## Content
+## Contenido
 
-5. [Monitor Jobs with Cloudera Observability and CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
-6. [Spark Job Governance with CDP Data Catalog](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-6-spark-job-governance-with-cdp-data-catalog)
+5. [Monitorear trabajos con Cloudera Observability y CDE](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-5-monitoring-jobs-with-cloudera-observability-and-cde)
+6. [Gobernanza de Trabajos Spark con CDP Data Catalog](https://github.com/pdefusco/CDE_121_HOL/blob/main/step_by_step_guides/english/part_03_observability.md#lab-6-spark-job-governance-with-cdp-data-catalog)
 
-## Lab 5. Monitoring Jobs with Cloudera Observability and CDE
+## Lab 5. Monitoreo de trabajos con Cloudera Observability y CDE
 
-CDE provides built-in Job observability feature including a Job Runs UI, the Airflow UI, and the ability to download job metadata and logs via the CDE API and CLI. In addition, CDE users can leverage Cloudera Observaibility, a Cloudera service that helps you interactively understand your environment, data services, workloads, clusters, and resources across all compute services in a CDP Environment.
+CDE proporciona una función incorporada de observabilidad de trabajos que incluye una interfaz de usuario de Ejecuciones de Trabajos, la interfaz de usuario de Airflow y la capacidad de descargar metadatos de trabajos y registros a través de la API y CLI de CDE. Además, los usuarios de CDE pueden aprovechar Cloudera Observability, un servicio de Cloudera que te ayuda a comprender interactivamente tu entorno, servicios de datos, cargas de trabajo, clústeres y recursos a través de todos los servicios de cómputo en un entorno CDP.
 
-When a workload completes, diagnostic information about the job or query and the cluster that processed them is collected by Telemetry Publisher and sent to Cloudera Observability, so you can optimize your queries and pipelines through:
+Cuando una carga de trabajo se completa, la información de diagnóstico sobre el trabajo o la consulta y el clúster que los procesó es recopilada por Telemetry Publisher y enviada a Cloudera Observability, para que puedas optimizar tus consultas y tuberías a través de:
 
-* A wide range of metrics and health tests that help you identify and troubleshoot both existing and potential issues.
-* Prescriptive guidance and recommendations that help you quickly address those problems and optimize solutions.
-* Performance baselines and historical analysis that help you identify and address performance problems.
+* Una amplia gama de métricas y pruebas de salud que te ayudan a identificar y solucionar tanto problemas existentes como potenciales.
+* Orientación prescriptiva y recomendaciones que te ayudan a abordar rápidamente esos problemas y optimizar las soluciones.
+* Líneas de base de rendimiento y análisis histórico que te ayudan a identificar y abordar problemas de rendimiento.
 
-In addition, Cloudera Observability also enables you to:
+Además, Cloudera Observability también te permite:
 
-* Visually display your workload cluster’s current and historical costs that help you plan and forecast budgets, future workload environments, and justify current user groups and resources.
-* Trigger actions in real-time across jobs and queries that help you take steps to alleviate potential problems.
-* Enable the daily delivery of your cluster statistics to your email address that help you to track, compare, and monitor without having to log in to the cluster.
-* Break down your workload metrics into more meaningful views for your business requirements that help you analyze specific workload criteria. For example, you can analyze how queries that access a particular database or that use a specific resource pool are performing against your SLAs. Or you can examine how all the queries are performing on your cluster that are sent by a specific user.
+* Mostrar visualmente los costos actuales e históricos de tu clúster de trabajo que te ayudan a planificar y prever presupuestos, futuros entornos de trabajo y justificar grupos de usuarios y recursos actuales.
+* Activar acciones en tiempo real a través de trabajos y consultas que te ayudan a tomar medidas para aliviar problemas potenciales.
+* Habilitar la entrega diaria de las estadísticas de tu clúster a tu dirección de correo electrónico, lo que te ayuda a realizar un seguimiento, comparar y monitorear sin tener que iniciar sesión en el clúster.
+* Desglosar las métricas de tu carga de trabajo en vistas más significativas para los requisitos de tu negocio, lo que te ayuda a analizar criterios específicos de carga de trabajo. Por ejemplo, puedes analizar cómo las consultas que acceden a una base de datos en particular o que usan un grupo de recursos específico están funcionando en comparación con tus SLA. O puedes examinar cómo están funcionando todas las consultas en tu clúster que son enviadas por un usuario específico.
 
-#### Identify the Cause of slower than usual CDE Spark Jobs in CDP Observability
+#### Identificar la causa de trabajos Spark más lentos de lo usual en CDP Observability
 
-Navigate out of CDE back to the CDP Home Page and then open CDP Observability. Select and expand the Org1 Virtual Cluster and then the "Spark" tab. Look for the "LargeShuffleExample" Spark Application and identify jobs that take longer than usual. How often is the job running slower than usual?
+Navega fuera de CDE hacia la página de inicio de CDP y luego abre CDP Observability. Selecciona y expande el Clúster Virtual Org1 y luego la pestaña "Spark". Busca la aplicación Spark "LargeShuffleExample" e identifica los trabajos que tardan más de lo usual. ¿Con qué frecuencia se está ejecutando el trabajo más lento de lo habitual?
 
 ![alt text](../../img/obs-main-page.png)
 
@@ -36,7 +36,7 @@ Navigate out of CDE back to the CDP Home Page and then open CDP Observability. S
 
 ![alt text](../../img/obs-examine-job.png)
 
-Select the job run with the highest duration and explore the Execution Details tab to find Spark Job and Stage level information, and the Baseline tab to find granular Spark execution metrics. In the Baseline tab, click on the "Show Abnormal Metrics" icon to identify potential problems with your particular job run.
+Selecciona la ejecución de trabajo con la mayor duración y explora la pestaña Detalles de Ejecución para encontrar información a nivel de trabajo y etapa de Spark, y la pestaña Línea de Base para encontrar métricas granulares de ejecución de Spark. En la pestaña Línea de Base, haz clic en el ícono "Mostrar Métricas Anormales" para identificar problemas potenciales con la ejecución de tu trabajo en particular.
 
 ![alt text](../../img/details-1.png)
 
@@ -44,11 +44,11 @@ Select the job run with the highest duration and explore the Execution Details t
 
 ![alt text](../../img/details-3.png)
 
-By inspecting the current run's metrics and comparing with the baseline, it looks like roughly 20% of the time the application is performing an abnormal Spark Shuffle. Next, open the Spark Application code and try to identify why that's happening. The code is located in ["observability/skewApp.py"](https://github.com/pdefusco/CDE_123_HOL/blob/main/observability/skewApp.py)
+Al inspeccionar las métricas de la ejecución actual y compararlas con la línea de base, parece que aproximadamente el 20% del tiempo la aplicación está realizando un "Shuffle" anormal de Spark. Luego, abre el código de la aplicación Spark e intenta identificar por qué está ocurriendo eso. El código se encuentra en ["observability/skewApp.py"](https://github.com/pdefusco/CDE_123_HOL/blob/main/observability/skewApp.py)
 
-#### Identify the Cause of a Failed CDE Spark Job in CDP Observability
+#### Identificar la causa de un trabajo Spark fallido en CDP Observability
 
-Now switch to the Org2 Virtual Cluster in Observability and open the job failures view. Identify a failed run of job "ObsDemo" and explore the error trace.
+Ahora cambia al Clúster Virtual Org2 en Observability y abre la vista de fallos de trabajos. Identifica una ejecución fallida del trabajo "ObsDemo" y explora el rastreo de errores.
 
 ![alt text](../../img/obs-failed-1.png)
 
@@ -60,54 +60,54 @@ Now switch to the Org2 Virtual Cluster in Observability and open the job failure
 
 ![alt text](../../img/obs-failed-5.png)
 
-It looks like your Spark Job failed due to insufficient resources. In particular, one of your partitions has too much data due to skew. In order to rerun the job successfully, you could just increase Spark Executor memory and cores, or you could improve the code to better handle data skew.  
+Parece que tu trabajo Spark falló debido a recursos insuficientes. En particular, una de tus particiones tiene demasiados datos debido a un desequilibrio de carga. Para volver a ejecutar el trabajo con éxito, podrías simplemente aumentar la memoria y los núcleos del ejecutor de Spark, o podrías mejorar el código para manejar mejor el desequilibrio de datos.  
 
-## Lab 6. Spark Job Governance with CDP Data Catalog
+## Lab 6. Gobernanza de Trabajos Spark con CDP Data Catalog
 
-The CDP Data Catalog is a service within CDP that enables you to understand, manage, secure, and govern data assets across the enterprise. Data Catalog helps you understand data across multiple clusters and across multiple CDP environments. Using Data Catalog, you can understand how data is interpreted for use, how it is created and modified, and how data access is secured and protected.
+CDP Data Catalog es un servicio dentro de CDP que te permite entender, gestionar, asegurar y gobernar los activos de datos a lo largo de la empresa. Data Catalog te ayuda a comprender los datos a través de múltiples clústeres y entornos CDP. Usando Data Catalog, puedes entender cómo se interpretan los datos para su uso, cómo se crean y modifican, y cómo se asegura y protege el acceso a los datos.
 
-#### Explore Jobs in Apache Atlas
+#### Explorar trabajos en Apache Atlas
 
-Navigate back to the CDP Home Page, open Data Catalog and then Atlas.
+Navega de nuevo a la página de inicio de CDP, abre Data Catalog y luego Atlas.
 
 ![alt text](../../img/catalog_1.png)
 
 ![alt text](../../img/catalog_2.png)
 
-Atlas represents metadata as types and entities, and provides metadata management and governance capabilities for organizations to build, categorize, and govern data assets.
+Atlas representa metadatos como tipos y entidades, y proporciona capacidades de gestión y gobernanza de metadatos para que las organizaciones construyan, categoricen y gobiernen los activos de datos.
 
-Search for "spark_applications" in the search bar, then select a Spark Application from the list and explore its metadata.
+Busca "spark_applications" en la barra de búsqueda, luego selecciona una Aplicación Spark de la lista y explora sus metadatos.
 
 ![alt text](../../img/catalog_3.png)
 
 ![alt text](../../img/catalog_4.png)
 
-In the Classifications pane, create a new Metadata Classification. Make sure to use a unique Name.
+En el panel de Clasificaciones, crea una nueva Clasificación de Metadatos. Asegúrate de usar un Nombre único.
 
 ![alt text](../../img/catalog_5.png)
 
-Navigate back to the main page, find a spark application and open it. Then apply the newly created Metadata Classification.
+Navega de nuevo a la página principal, encuentra una aplicación Spark y ábrela. Luego aplica la nueva Clasificación de Metadatos creada.
 
 ![alt text](../../img/catalog_6.png)
 
 ![alt text](../../img/catalog_7.png)
 
-Finally perform a new search, this time using the Classification you created in order to filter for Spark Applications.
+Finalmente realiza una nueva búsqueda, esta vez usando la Clasificación que creaste para filtrar las Aplicaciones Spark.
 
 ![alt text](../../img/catalog_8.png)
 
-## Summary
+## Resumen
 
-Cloudera Observability is CDP’s single pane of glass observability solution, continually discovering and collecting performance telemetry across data, applications, and infrastructure components running in CDP deployments on private and public clouds. With advanced, intelligent analytics and correlations, it provides insights and recommendations to address tricky issues, optimize costs, and improve performance.
+Cloudera Observability es la solución de observabilidad de CDP, proporcionando una única vista continua de la telemetría de rendimiento a través de datos, aplicaciones e infraestructura en implementaciones CDP en nubes privadas y públicas. Con análisis avanzados e inteligencia, ofrece ideas y recomendaciones para abordar problemas complejos, optimizar costos y mejorar el rendimiento.
 
-CDP Data Catalog is a cloud data catalog is a metadata management service that helps organizations find, manage, and understand their data in the cloud. It's a centralized repository that can help with data-driven decision making, improve data management, and increase operational efficiency
+CDP Data Catalog es un servicio de catálogo de datos en la nube, una solución de gestión de metadatos que ayuda a las organizaciones a encontrar, gestionar y entender sus datos en la nube. Es un repositorio centralizado que puede ayudar en la toma de decisiones basada en datos, mejorar la gestión de datos y aumentar la eficiencia operativa.
 
-In this final section of the labs you explored Job Run monitoring capabilities in CDE. In particular, you used the CDE Job Runs UI to persist Job Run metadata, Spark Logs and Spark UI post-execution. Then, you used CDP Observability to explore granular Job Run metrics and detect outliers. Finally, you used CDP Data Catalog in order to classify Spark Job runs in order to govern and search important job run metadata.
+En esta sección final de los laboratorios, exploraste las capacidades de monitoreo de ejecuciones de trabajos en CDE. En particular, utilizaste la interfaz de usuario de Ejecuciones de Trabajos de CDE para persistir los metadatos de las ejecuciones de trabajos, los registros de Spark y la interfaz de usuario de Spark después de la ejecución. Luego, usaste CDP Observability para explorar métricas detalladas de las ejecuciones de trabajos y detectar valores atípicos. Finalmente, usaste CDP Data Catalog para clasificar las ejecuciones de trabajos Spark y gobernar y buscar metadatos importantes de las ejecuciones de trabajos.
 
-## Useful Links and Resources
+## Enlaces y Recursos Útiles
 
-* [Cloudera Observability Documentation](https://docs.cloudera.com/observability/cloud/index.html)
+* [Documentación de Cloudera Observability](https://docs.cloudera.com/observability/cloud/index.html)
 * [CDP Data Catalog](https://docs.cloudera.com/data-catalog/cloud/index.html)
-* [Apache Atlas Documentation](https://docs.cloudera.com/cdp-reference-architectures/latest/cdp-ra-security/topics/cdp-ra-security-apache-atlas.html)
-* [Apache Ranger Documentation](https://docs.cloudera.com/cdp-reference-architectures/latest/cdp-ra-security/topics/cdp-ra-security-apache-ranger.html)
-* [Efficiently Monitoring Jobs, Runs, and Resources with the CDE CLI](https://community.cloudera.com/t5/Community-Articles/Efficiently-Monitoring-Jobs-Runs-and-Resources-with-the-CDE/ta-p/379893)
+* [Documentación de Apache Atlas](https://docs.cloudera.com/cdp-reference-architectures/latest/cdp-ra-security/topics/cdp-ra-security-apache-atlas.html)
+* [Documentación de Apache Ranger](https://docs.cloudera.com/cdp-reference-architectures/latest/cdp-ra-security/topics/cdp-ra-security-apache-ranger.html)
+* [Monitoreo eficiente de trabajos, ejecuciones y recursos con la CDE CLI](https://community.cloudera.com/t5/Community-Articles/Efficiently-Monitoring-Jobs-Runs-and-Resources-with-the-CDE/ta-p/379893)
