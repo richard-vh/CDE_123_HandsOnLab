@@ -162,7 +162,7 @@ cde repository sync --name sparkAppRepoDevUser001 \
 
 ![alt text](../../img/cde-repos-2.png)
 
-## 4. Deploy using CLI
+#### Deploy using CLI
 
 Now create a CDE Spark job using the CDE Repository as a dependency.
 
@@ -201,7 +201,7 @@ cde job run --name cde_spark_iceberg_job_user001 \
 
 ![alt text](../../img/cde-job-6.png)
 
-## 5. Monitor
+####  Monitor
 
 Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
 

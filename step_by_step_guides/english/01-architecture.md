@@ -128,7 +128,7 @@ This view includes other important cluster management information. From here you
 
 Open the Configuration tab. Notice that you can select between Core and All Purpose Tier Clusters.
 In addition, this view provides options to set CPU and Memory autoscale ranges, Spark version, and Iceberg options are set here.
-CDE supports Spark 2.4.8, 3.2.3 and 3.3.0.
+CDE supports Spark 2.4.8, 3.2.3, 3.3.0 and 3.5.1.
 
 ![alt text](../../img/vc_details_1.png)
 
