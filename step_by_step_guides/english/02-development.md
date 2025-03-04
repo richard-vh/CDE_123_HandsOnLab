@@ -102,7 +102,7 @@ spark = CDESparkConnectSession.builder.sessionName('<your-spark-connect-session-
 ```
 
 ```
-storageLocation = s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
+storageLocation = <your-storage-location-here>
 username = <your-cdp-workload-username-here>
 ```
 
@@ -118,7 +118,20 @@ cde spark submit \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
   --executor-memory "4g" \
   --executor-cores 2 \
-  s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol
+  <your-storage-location-here> \
+  <your-cdp-workload-username-here>
+```
+
+For example:
+
+```
+cde spark submit \
+  pyspark-app.py \
+  --vcluster-endpoint https://9rqklznh.cde-8qhz2284.pdefusco.a465-9q4k.cloudera.site/dex/api/v1 \
+  --executor-memory "4g" \
+  --executor-cores 2 \
+  s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol \
+  user001
 ```
 
 Wait for the application to run and validate results in the terminal.
@@ -165,8 +178,8 @@ cde job create --name cde_spark_iceberg_job_user001 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
-  --arg s3a://cde-hol-buk-d2ab0f50/data/cde-123-hol \
-  --arg user001
+  --arg <your-storage-location-here> \
+  --arg <your-cdp-workload-username-here>
 ```
 
 ```
