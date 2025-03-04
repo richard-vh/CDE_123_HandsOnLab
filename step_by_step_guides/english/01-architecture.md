@@ -1,4 +1,4 @@
-# Part 1: CDE Architecture
+# CDE Architecture
 
 ## Objective
 
