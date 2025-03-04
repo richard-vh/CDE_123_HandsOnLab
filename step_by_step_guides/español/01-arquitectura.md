@@ -1,4 +1,4 @@
-# Parte 1: Arquitectura de CDE
+# Arquitectura de CDE
 
 ## Objetivo
 
