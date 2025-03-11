@@ -147,7 +147,7 @@ cde job create --name cde_spark_job_bronze_user001 \
 ```
 cde job create --name cde_spark_job_silver_user001 \
   --type spark \
-  --arg <your-cdp-workload-username-here> \
+  --arg user001 \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
