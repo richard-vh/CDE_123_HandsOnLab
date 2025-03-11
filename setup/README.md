@@ -2,7 +2,8 @@
 
 ## Objective
 
-This project provides templates for generating realistic, synthetic data at scale using DBLDatagen and Spark in Cloudera Data Engineering. The templates are customizable according to your use case. The templates are automatically deployed via scripts that wrap around the CDE CLI.
+This document provides instructions for setting up HOL dependencies. The HOL lead must complete these steps as a requirement prior to the HOL event date.
+
 
 ## Table of Contents
 
@@ -11,6 +12,7 @@ This project provides templates for generating realistic, synthetic data at scal
 * [Deployment Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#deployment-instructions)
 * [Teardown Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#teardown-instructions)
 * [Summary](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#summary)
+
 
 ## Requirements
 
@@ -21,7 +23,9 @@ To deploy the demo via this automation you need:
 * An CDE Service on version 1.23 or above.
 * A CDE Spark 3.2 Virtual Cluster foe data generation and at least one CDE Spark 3.5 for the labs.
 * The Docker Custom Runtime entitlement. Please contact the CDE product or sales team to obtain the entitlement.
-* A Dockerhub account. Please have your Dockerhub user and password ready.
+* A Dockerhub account. Keep your Dockerhub user and password handy.
+* A GitHub account. Keep have your GitHub token handy.
+
 
 ## Important Information
 
@@ -30,17 +34,20 @@ The automation deploys the following to your CDE Virtual Cluster:
 * A CDE Spark Job and associated CDE Resources with the purpose of creating synthetic data in Cloud Storage for each participant.
 * Files are written to Cloud Storage via standard Spark methods.
 
+
 ## Deployment Instructions
 
-When setup is complete navigate to the CDE UI and validate that the job run has completed successfully. This implies that the HOL data has been created successfully in Cloud Storage.
+There are three setup steps. All three can be done in parallel.
 
-Clone this repository to your machine. Then run two scripts:
+1. Create data in a Spark 3.2 or 3.3 VC.
+2. Create shared participant resources (files and Python resources) in all the Spark 3.5 VC's used throughout the labs.
+3. Airflow configurations.
 
-1. Run deploy_hol.py in a Spark 3.2 or 3.3 VC.
-2. Run deploy_hol_resources.py in all the Spark 3.5 VC's used throughout the labs.
-
+In order to complete these requirements, clone this repository in your local machine and follow the steps below.
 
 #### 1. Run deploy_hol.py in a Spark 3.2 or 3.3 VC
+
+Even if you have multiple Spark 3.5 VC's, this step only needs to be done once in your Spark 3.2 or 3.3 VC.
 
 Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3.2 or 3.3 Virtual Cluster's CDE Jobs API URL.
 
@@ -64,6 +71,8 @@ For example:
 
 #### 2. Run deploy_hol_resources.py in all the Spark 3.5 VC's
 
+You must repeat these steps for each Spark 3.5 VC in which HOL participants will work through the labs.
+
 Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3.5 Virtual Cluster's CDE Jobs API URL.
 
 Deployment script command template:
@@ -83,6 +92,35 @@ For example:
 #Azure
 % ./setup/deploy_hol_resources.sh pauldefusco
 ```
+
+#### 3. Airflow Configurations
+
+In this step you will install the GitHub operator in the Airflow Python Environment and create the GitHub Airflow connection in all the Spark 3.5 VC's used throughout the labs. You must repeat these steps for each Spark 3.5 VC in which HOL participants will work through the labs.
+
+First, open the Airflow tab of the Virtual Cluster Details page and install the GitHub operator as shown below.
+
+![alt text](../img/airflow-pyenv-view.png)
+
+![alt text](../img/validate_configs.png)
+
+![alt text](../img/build-pyenv.png)
+
+![alt text](../img/building-pyenv.png)
+
+![alt text](../img/activate-pyenv.png)
+
+![alt text](../img/pyenv-built.png)
+
+Then, create the GitHub Connection. Make sure to name the Conection ID with "default_github" and then paste the GitHub token in the respective field.
+
+![alt text](../img/airflow-ui.png)
+
+![alt text](../img/airflow-connection-1.png)
+
+![alt text](../img/airflow-connection-2.png)
+
+![alt text](../img/airflow-connection-3.png)
+
 
 ## Teardown Instructions
 
