@@ -6,11 +6,11 @@ This project provides templates for generating realistic, synthetic data at scal
 
 ## Table of Contents
 
-* [Requirements]()
-* [Important Information]()
-* [Deployment Instructions]()
-* [Teardown Instructions]()
-* [Summary]()
+* [Requirements](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#requirements)
+* [Important Information](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#important-information)
+* [Deployment Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#deployment-instructions)
+* [Teardown Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#teardown-instructions)
+* [Summary](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#summary)
 
 ## Requirements
 
@@ -19,6 +19,7 @@ To deploy the demo via this automation you need:
 * A CDP tenant in Public or Private cloud.
 * A CDP Workload User with Ranger policies and IDBroker Mappings configured accordingly.
 * An CDE Service on version 1.23 or above.
+* A CDE Spark 3.2 Virtual Cluster foe data generation and at least one CDE Spark 3.5 for the labs.
 * The Docker Custom Runtime entitlement. Please contact the CDE product or sales team to obtain the entitlement.
 * A Dockerhub account. Please have your Dockerhub user and password ready.
 
@@ -41,6 +42,8 @@ Clone this repository to your machine. Then run two scripts:
 
 #### 1. Run deploy_hol.py in a Spark 3.2 or 3.3 VC
 
+Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3.2 or 3.3 Virtual Cluster's CDE Jobs API URL.
+
 Deployment script command template:
 
 ```
@@ -60,6 +63,8 @@ For example:
 ```
 
 #### 2. Run deploy_hol_resources.py in all the Spark 3.5 VC's
+
+Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3.5 Virtual Cluster's CDE Jobs API URL.
 
 Deployment script command template:
 
