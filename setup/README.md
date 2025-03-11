@@ -1,4 +1,4 @@
-# CDE Data Gen
+# CDE HOL Setup
 
 ## Objective
 
