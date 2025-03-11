@@ -22,6 +22,7 @@ To deploy the demo via this automation you need:
 * A CDP Workload User with Ranger policies and IDBroker Mappings configured accordingly.
 * An CDE Service on version 1.23 or above.
 * A CDE Spark 3.2 Virtual Cluster foe data generation and at least one CDE Spark 3.5 for the labs.
+* A working local installation of the CDE CLI.
 * The Docker Custom Runtime entitlement. Please contact the CDE product or sales team to obtain the entitlement.
 * A Dockerhub account. Keep your Dockerhub user and password handy.
 * A GitHub account. Keep have your GitHub token handy.
@@ -101,7 +102,7 @@ First, open the Airflow tab of the Virtual Cluster Details page and install the 
 
 ![alt text](../img/airflow-pyenv-view.png)
 
-![alt text](../img/validate_configs.png)
+![alt text](../img/validate-configs.png)
 
 ![alt text](../img/build-pyenv.png)
 
