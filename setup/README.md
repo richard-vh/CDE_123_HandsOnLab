@@ -33,7 +33,13 @@ The automation deploys the following to your CDE Virtual Cluster:
 
 When setup is complete navigate to the CDE UI and validate that the job run has completed successfully. This implies that the HOL data has been created successfully in Cloud Storage.
 
-Clone this repository to your machine. Then run the deployment script.
+Clone this repository to your machine. Then run two scripts:
+
+1. Run deploy_hol.py in a Spark 3.2 or 3.3 VC.
+2. Run deploy_hol_resources.py in all the Spark 3.5 VC's used throughout the labs.
+
+
+#### 1. Run deploy_hol.py in a Spark 3.2 or 3.3 VC
 
 Deployment script command template:
 
@@ -51,6 +57,26 @@ For example:
 ```
 #Azure
 % ./setup/deploy_hol.sh pauldefusco pauldefusco 10 abfs://logs@go01demoazure.dfs.core.windows.net/data/cde-123-hol
+```
+
+#### 2. Run deploy_hol_resources.py in all the Spark 3.5 VC's
+
+Deployment script command template:
+
+```
+% ./setup/deploy_hol_resources.sh <cdp-workload-user>
+```
+
+For example:
+
+```
+#AWS
+% ./setup/deploy_hol_resources.sh pauldefusco
+```
+
+```
+#Azure
+% ./setup/deploy_hol_resources.sh pauldefusco
 ```
 
 ## Teardown Instructions
