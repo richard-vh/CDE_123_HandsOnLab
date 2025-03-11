@@ -53,7 +53,8 @@ cde job create --name cde_spark_job_prd_user001 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
   --vcluster-endpoint <your-PRD-vc-jobs-api-url-here> \
-  --arg <your-storage-location-here>
+  --arg <your-storage-location-here> \
+  --arg <your-hol-username-here>
 ```
 
 ```
@@ -73,7 +74,8 @@ cde job create --name cde_spark_job_prd_user001 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
   --vcluster-endpoint https://rncv8wqr.cde-mbk2gj8x.pdf-3425.a465-9q4k.cloudera.site/dex/api/v1 \
-  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-colombia
+  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-colombia \
+  --arg user001
 ```
 
 ```
