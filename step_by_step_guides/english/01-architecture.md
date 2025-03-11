@@ -28,9 +28,9 @@ The CDE Service can be reached from the CDP Home Page by clicking on the blue "D
 
 ![alt text](../../img/cdp_lp_0.png)
 
-The CDE Landing Page allows you to access, create and manage CDE Virtual Clusters. Within each CDE Virtual Cluster you can  create, monitor and troubleshoot Spark and Airflow Jobs.
+The CDE Landing Page allows you to access, create and manage CDE Services and Virtual Clusters. Within each CDE Service you can deploy one or more CDE Virtual Cluster. In the Virtual Cluster you can create, monitor and troubleshoot Spark and Airflow Jobs.
 
-The Virtual Cluster is pegged to the CDP Environment. Each CDE Virtual Cluster is mapped to at most one CDP Environment while a CDP Environment can map to one or more Virtual Cluster.
+The CDE Service is pegged to the CDP Environment. Each CDE Service is mapped to at most one CDP Environment while a CDP Environment can map to one or more CDE Services.
 
 These are the most important components in the CDE Service:
 
@@ -38,10 +38,10 @@ These are the most important components in the CDE Service:
 A logical subset of your cloud provider account including a specific virtual network. CDP Environments can be in AWS, Azure, RedHat OCP and Cloudera ECS. For more information, see [CDP Environments](https://docs.cloudera.com/management-console/cloud/overview/topics/mc-core-concepts.html). Practically speaking, an environment is equivalent to a Data Lake as each environment is automatically associated with its own SDX services for Security, Governance and Lineage.
 
 ##### CDE Service
-The long-running Kubernetes cluster and services that manage the virtual clusters. The CDE service must be enabled on an environment before you can create any virtual clusters.
+The long-running Kubernetes cluster and services that manage the CDE Virtual Clusters. The CDE Service must be enabled on an environment before you can create any CDE Virtual Clusters.
 
-##### Virtual Cluster
-An individual auto-scaling cluster with predefined CPU and memory ranges. Virtual Clusters in CDE can be created and deleted on demand. Jobs are associated with clusters. Up until CDE version 1.18 only one type of Virtual Clusters was available. Since Version 1.19 you can choose between two Cluster Tiers:
+##### CDE Virtual Cluster
+An individual auto-scaling cluster with predefined CPU and memory ranges. Virtual Clusters in CDE can be created and deleted on demand. Jobs are associated with clusters. When deploying a Virtual Cluster you can choose between two Cluster Tiers:
 
 *Core (Tier 1)*: Batch-based transformation and engineering options include:
 * Autoscaling Cluster
@@ -57,7 +57,7 @@ An individual auto-scaling cluster with predefined CPU and memory ranges. Virtua
 * IDE (Coming in October 2023 with CDE 1.20)
 
 Core clusters are recommended as Production environments. All Purpose clusters are instead designed to be used as Development and Testing environments.
-For more information on the CDE 1.19.1 and 1.19.2 releases please visit this page in the [documentation](https://docs.cloudera.com/data-engineering/cloud/release-notes/topics/cde-whats-new-1.19.html).
+For more information on the CDE 1.23 release please visit this page in the [documentation](https://docs.cloudera.com/data-engineering/cloud/release-notes/topics/cde-whats-new-1.23.0.html).
 
 ##### Jobs
 Application code along with defined configurations and resources. Jobs can be run on demand or scheduled. An individual job execution is called a job run.
@@ -86,9 +86,7 @@ For more information please visit the [documentation](https://iceberg.apache.org
 
 Now that you have covered the basics of CDE, spend a few moments familiarizing yourself with the CDE Landing page.
 
-The Home Page provides a high level overview of all CDE Services and Clusters. It was redesigned in version 1.19 to also include shortcuts for different actions such as creating CDE Jobs and Resources or visiting the documentation.
-
-At the top, you have shortcuts to creating CDE Jobs and Resources.
+The Home Page provides a high level overview of all CDE Services and Clusters. At the top, you have shortcuts to creating CDE Jobs and Resources.
 
 ![alt text](../../img/new_home_119.png)
 
@@ -128,7 +126,7 @@ This view includes other important cluster management information. From here you
 
 Open the Configuration tab. Notice that you can select between Core and All Purpose Tier Clusters.
 In addition, this view provides options to set CPU and Memory autoscale ranges, Spark version, and Iceberg options are set here.
-CDE supports Spark 2.4.8, 3.2.3, 3.3.0 and 3.5.1.
+CDE supports Spark 3.5.1.
 
 ![alt text](../../img/vc_details_1.png)
 
@@ -144,7 +142,7 @@ A CDE Service defines compute instance types, instance autoscale ranges and the 
 
 Within a CDE Service you can deploy one or more CDE Virtual Clusters. The Service Autoscale Range is a count of min/max allowed Compute Instances. The Virtual Cluster Autoscale Range is the min/max CPU and Memory that can be utilized by all CDE Jobs within the cluster. The Virtual Cluster Autoscale Range is naturally bounded by the CPU and Memory available at the Service level.
 
-CDE supports Spark versions 2.4.8, 3.2.3, 3.3.0 and 3.5.1. CDE Virtual Clusters are deployed with one Spark Version per Virtual Cluster.
+CDE supports Spark versions 3.5.1. CDE Virtual Clusters are deployed with one Spark Version per Virtual Cluster.
 
 This flexible architecture allows you to isolate your workloads and limit access within different autoscaling compute clusters while predefining cost management guardrails at an aggregate level. For example, you can define Services at an organization level and Virtual Clusters within them as DEV, QA, PROD, etc.
 

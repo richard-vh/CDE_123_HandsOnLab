@@ -28,9 +28,9 @@ Il servizio CDE può essere raggiunto dalla pagina principale di CDP facendo cli
 
 ![alt text](../../img/cdp_lp_0.png)
 
-La pagina di atterraggio CDE consente di accedere, creare e gestire Cluster Virtuali CDE. All'interno di ciascun Cluster Virtuale CDE puoi creare, monitorare e risolvere problemi dei Job Spark e Airflow.
+La home page di CDE ti consente di accedere, creare e gestire i servizi CDE e i cluster virtuali. All'interno di ogni servizio CDE, puoi distribuire uno o più cluster virtuali CDE. Nel cluster virtuale, puoi creare, monitorare e risolvere i problemi dei job Spark e Airflow.
 
-Il Cluster Virtuale è associato all'Ambiente CDP. Ogni Cluster Virtuale CDE è mappato al massimo a un Ambiente CDP, mentre un Ambiente CDP può essere mappato a uno o più Cluster Virtuali.
+Il servizio CDE è associato all'ambiente CDP. Ogni servizio CDE è mappato al massimo a un ambiente CDP, mentre un ambiente CDP può essere mappato a uno o più servizi CDE.
 
 Questi sono i componenti più importanti nel Servizio CDE:
 
@@ -41,7 +41,7 @@ Un sottoinsieme logico del tuo account del provider di cloud, che include una re
 Il cluster Kubernetes a lungo termine e i servizi che gestiscono i cluster virtuali. Il servizio CDE deve essere abilitato su un ambiente prima di poter creare qualsiasi cluster virtuale.
 
 ##### Cluster Virtuale
-Un cluster auto-scalante individuale con intervalli predefiniti di CPU e memoria. I Cluster Virtuali in CDE possono essere creati e eliminati su richiesta. I job sono associati ai cluster. Fino alla versione 1.18 di CDE, era disponibile solo un tipo di Cluster Virtuale. A partire dalla versione 1.19, puoi scegliere tra due livelli di Cluster:
+Un cluster di auto-scaling individuale con intervalli predefiniti di CPU e memoria. I Cluster Virtuali in CDE possono essere creati ed eliminati su richiesta. I job sono associati ai cluster. Quando distribuisci un Cluster Virtuale, puoi scegliere tra due livelli di cluster:
 
 *Core (Tier 1)*: Le opzioni di trasformazione e ingegneria basate su batch includono:
 * Cluster auto-scalanti
@@ -84,9 +84,7 @@ Per maggiori informazioni visita la [documentazione](https://iceberg.apache.org/
 
 Ora che hai coperto le basi di CDE, prenditi qualche minuto per familiarizzare con la pagina di atterraggio di CDE.
 
-La Home Page fornisce una panoramica ad alto livello di tutti i Servizi CDE e i Cluster. È stata ridisegnata nella versione 1.19 per includere anche scorciatoie per diverse azioni come la creazione di Job e Risorse CDE o la visita della documentazione.
-
-In alto, hai scorciatoie per creare Job e Risorse CDE.
+La Home Page fornisce una panoramica ad alto livello di tutti i Servizi CDE e i Cluster. In alto, hai scorciatoie per creare Job e Risorse CDE.
 
 ![alt text](../../img/new_home_119.png)
 
@@ -126,7 +124,7 @@ Questa vista include altre informazioni importanti sulla gestione del cluster. D
 
 Apri la scheda Configurazione. Nota che puoi selezionare tra Cluster Core e Cluster All Purpose.
 Inoltre, questa vista fornisce opzioni per impostare gli intervalli di autoscaling della CPU e della memoria, versione di Spark, e le opzioni di Iceberg sono impostate qui.
-CDE supporta Spark 2.4.8, 3.2.3, 3.3.0 e 3.5.1.
+CDE supporta Spark 3.5.1.
 
 ![alt text](../../img/vc_details_1.png)
 
@@ -142,7 +140,7 @@ Un Servizio CDE definisce i tipi di istanza di calcolo, gli intervalli di autosc
 
 All'interno di un Servizio CDE puoi distribuire uno o più Cluster Virtuali CDE. L'Intervallo di Autoscaling del Servizio è il numero minimo/massimo di Istanza di Calcolo consentito. L'Intervallo di Autoscaling del Cluster Virtuale è la quantità minima/massima di CPU e Memoria che possono essere utilizzate da tutti i Job CDE all'interno del cluster. L'Intervallo di Autoscaling del Cluster Virtuale è naturalmente vincolato dalla CPU e dalla Memoria disponibili a livello di Servizio.
 
-CDE supporta le versioni di Spark 2.4.8, 3.2.3, 3.3.0 e 3.5.1. I Cluster Virtuali CDE vengono distribuiti con una versione di Spark per ogni Cluster Virtuale.
+CDE supporta le versioni di Spark 3.5.1. I Cluster Virtuali CDE vengono distribuiti con una versione di Spark per ogni Cluster Virtuale.
 
 Questa architettura flessibile ti consente di isolare i tuoi carichi di lavoro e limitare l'accesso all'interno di diversi cluster di calcolo auto-scalabili, predefinendo al contempo i limiti di gestione dei costi a livello aggregato. Ad esempio, puoi definire Servizi a livello di organizzazione e Cluster Virtuali al loro interno come DEV, QA, PROD, ecc.
 

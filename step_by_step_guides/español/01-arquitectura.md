@@ -28,20 +28,20 @@ El Servicio CDE se puede acceder desde la página de inicio de CDP haciendo clic
 
 ![texto alternativo](../../img/cdp_lp_0.png)
 
-La Página de Inicio de CDE permite acceder, crear y administrar Clústeres Virtuales de CDE. Dentro de cada Clúster Virtual de CDE, puedes crear, monitorear y solucionar problemas de trabajos de Spark y Airflow.
+La página de inicio de CDE te permite acceder, crear y gestionar Servicios CDE y Clústeres Virtuales. Dentro de cada Servicio CDE, puedes desplegar uno o más Clústeres Virtuales CDE. En el Clúster Virtual, puedes crear, monitorear y solucionar problemas de trabajos de Spark y Airflow.
 
-El Clúster Virtual está vinculado al Entorno CDP. Cada Clúster Virtual de CDE está asignado a un máximo de un Entorno CDP, mientras que un Entorno CDP puede mapearse a uno o más Clústeres Virtuales.
+El Servicio CDE está vinculado al Entorno CDP. Cada Servicio CDE está mapeado a un máximo de un Entorno CDP, mientras que un Entorno CDP puede estar mapeado a uno o más Servicios CDE.
 
 Estos son los componentes más importantes en el Servicio CDE:
 
-##### Entorno CDP
+##### Ambiente CDP
 Un subconjunto lógico de tu cuenta de proveedor de nube que incluye una red virtual específica. Los Entornos CDP pueden estar en AWS, Azure, RedHat OCP y Cloudera ECS. Para más información, consulta [Entornos CDP](https://docs.cloudera.com/management-console/cloud/overview/topics/mc-core-concepts.html). Prácticamente, un entorno equivale a un Data Lake, ya que cada entorno se asocia automáticamente con sus propios servicios SDX para Seguridad, Gobernanza y Linaje.
 
 ##### Servicio CDE
 El clúster de Kubernetes de larga duración y los servicios que administran los clústeres virtuales. El servicio CDE debe estar habilitado en un entorno antes de que puedas crear clústeres virtuales.
 
 ##### Clúster Virtual
-Un clúster de autoescalado individual con rangos predefinidos de CPU y memoria. Los Clústeres Virtuales en CDE se pueden crear y eliminar según demanda. Los trabajos están asociados con los clústeres. Hasta la versión 1.18 de CDE solo había un tipo de Clúster Virtual. Desde la versión 1.19 puedes elegir entre dos niveles de clúster:
+Un clúster de autoescalado individual con rangos predefinidos de CPU y memoria. Los Clústeres Virtuales en CDE pueden ser creados y eliminados bajo demanda. Los trabajos están asociados con los clústeres. Al desplegar un Clúster Virtual, puedes elegir entre dos niveles de clúster:
 
 *Core (Nivel 1)*: Opciones de transformación y ingeniería basadas en lotes incluyen:
 * Clúster con autoescalado
@@ -86,9 +86,7 @@ Para obtener más información, visita la [documentación](https://iceberg.apach
 
 Ahora que has cubierto los conceptos básicos de CDE, dedica unos momentos a familiarizarte con la página de inicio de CDE.
 
-La Página de Inicio proporciona una visión general de alto nivel de todos los Servicios y Clústeres de CDE. Fue rediseñada en la versión 1.19 para incluir accesos directos a diferentes acciones, como la creación de Trabajos y Recursos de CDE o la consulta de la documentación.
-
-En la parte superior, tienes accesos directos para crear Trabajos y Recursos en CDE.  
+La Página de Inicio proporciona una visión general de alto nivel de todos los Servicios y Clústeres de CDE. En la parte superior, tienes accesos directos para crear Trabajos y Recursos en CDE.  
 
 ![alt text](../../img/new_home_119.png)
 
@@ -128,7 +126,7 @@ Esta vista incluye otra información clave de administración del clúster. Desd
 
 Abre la pestaña de Configuración. Observa que puedes seleccionar entre Clústeres de Nivel Core y All Purpose.  
 Además, esta vista proporciona opciones para establecer rangos de autoescalado de CPU y Memoria, la versión de Spark y opciones de Iceberg.  
-CDE es compatible con Spark 2.4.8, 3.2.3 y 3.3.0.  
+CDE es compatible con Spark 3.5.1.  
 
 ![alt text](../../img/vc_details_1.png)
 
@@ -146,7 +144,7 @@ Dentro de un Servicio CDE, puedes implementar uno o más Clústeres Virtuales de
 El Rango de Autoescalado del Servicio define la cantidad mínima y máxima de instancias de cómputo permitidas.  
 El Rango de Autoescalado del Clúster Virtual define la cantidad mínima y máxima de CPU y Memoria que pueden utilizarse para todos los Trabajos en el clúster. Este rango está naturalmente limitado por los recursos de CPU y Memoria disponibles a nivel de Servicio.
 
-CDE es compatible con Spark en sus versiones 2.4.8, 3.2.3, 3.3.0 y 3.5.1. Cada Clúster Virtual de CDE se implementa con una única versión de Spark.
+CDE es compatible con Spark en sus versiones 3.5.1. Cada Clúster Virtual de CDE se implementa con una única versión de Spark.
 
 Esta arquitectura flexible permite aislar cargas de trabajo y limitar el acceso dentro de diferentes clústeres de cómputo con autoescalado, mientras se predefinen límites de gestión de costos a nivel agregado. Por ejemplo, puedes definir Servicios a nivel organizacional y dentro de ellos, Clústeres Virtuales para entornos de Desarrollo (DEV), Pruebas (QA) y Producción (PROD).
 

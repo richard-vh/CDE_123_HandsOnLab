@@ -28,9 +28,9 @@ Le service CDE peut être atteint depuis la page d'accueil de CDP en cliquant su
 
 ![alt text](../../img/cdp_lp_0.png)
 
-La page d'accueil CDE vous permet d'accéder, de créer et de gérer des clusters virtuels CDE. Dans chaque cluster virtuel CDE, vous pouvez créer, surveiller et résoudre les problèmes des jobs Spark et Airflow.
+La page d'accueil CDE vous permet d'accéder, de créer et de gérer des services CDE et des clusters virtuels. Dans chaque service CDE, vous pouvez déployer un ou plusieurs clusters virtuels CDE. Dans le cluster virtuel, vous pouvez créer, surveiller et résoudre les problèmes des tâches Spark et Airflow.
 
-Le Cluster Virtuel est associé à l'Environnement CDP. Chaque Cluster Virtuel CDE est mappé à un maximum d'un Environnement CDP, tandis qu'un Environnement CDP peut être mappé à un ou plusieurs Clusters Virtuels.
+Le service CDE est lié à l'environnement CDP. Chaque service CDE est mappé à au plus un environnement CDP, tandis qu'un environnement CDP peut être mappé à un ou plusieurs services CDE.
 
 Voici les composants les plus importants dans le service CDE :
 
@@ -41,7 +41,7 @@ Un sous-ensemble logique de votre compte fournisseur de cloud, incluant un rése
 Le cluster Kubernetes en fonctionnement et les services qui gèrent les clusters virtuels. Le service CDE doit être activé sur un environnement avant que vous puissiez créer des clusters virtuels.
 
 ##### Cluster Virtuel
-Un cluster à mise à l'échelle automatique individuel avec des plages prédéfinies de CPU et de mémoire. Les clusters virtuels dans CDE peuvent être créés et supprimés à la demande. Les jobs sont associés à des clusters. Jusqu'à la version 1.18 de CDE, un seul type de cluster virtuel était disponible. Depuis la version 1.19, vous pouvez choisir entre deux niveaux de clusters :
+Un cluster à mise à l'échelle automatique individuel avec des plages prédéfinies de CPU et de mémoire. Les Clusters Virtuels dans CDE peuvent être créés et supprimés à la demande. Les tâches sont associées aux clusters. Lors du déploiement d'un Cluster Virtuel, vous pouvez choisir entre deux niveaux de cluster:
 
 *Core (Niveau 1)* : Les options de transformation et d'ingénierie basées sur le batch incluent :
 * Cluster à mise à l'échelle automatique
@@ -86,9 +86,7 @@ Pour plus d'informations, veuillez consulter la [documentation](https://iceberg.
 
 Maintenant que vous avez couvert les bases de CDE, passez quelques instants à vous familiariser avec la page d'accueil de CDE.
 
-La page d'accueil fournit un aperçu général de tous les services CDE et des clusters. Elle a été redessinée dans la version 1.19 pour inclure également des raccourcis pour différentes actions telles que la création de jobs et de ressources CDE ou la consultation de la documentation.
-
-En haut, vous avez des raccourcis pour créer des jobs et des ressources CDE.
+La page d'accueil fournit un aperçu général de tous les services CDE et des clusters. En haut, vous avez des raccourcis pour créer des jobs et des ressources CDE.
 
 ![alt text](../../img/new_home_119.png)
 
@@ -129,7 +127,7 @@ Cette vue inclut d'autres informations importantes sur la gestion du cluster. À
 Ouvrez l'onglet Configuration. Notez que vous pouvez choisir entre les clusters de niveau Core et All Purpose.
 De plus, cette vue permet de définir les plages d'échelle automatique de CPU et de mémoire, la version de Spark, et les options Iceberg.
 
-CDE prend en charge les versions de Spark 2.4.8, 3.2.3, 3.3.0 et 3.5.1.
+CDE prend en charge les versions de Spark 3.5.1.
 
 ![alt text](../../img/vc_details_1.png)
 
