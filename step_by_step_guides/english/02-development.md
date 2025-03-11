@@ -259,7 +259,9 @@ cde job list \
 cde job list \
   --filter 'name[eq]cde_spark_iceberg_job_user001' \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
+```
 
+```
 # List all jobs in the Virtual Cluster whose job application file name equals "pyspark-app.py":
 cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
@@ -273,7 +275,9 @@ For example:
 cde job list \
   --filter 'name[eq]cde_spark_iceberg_job_user001' \
   --vcluster-endpoint https://kjmdj97b.cde-mbk2gj8x.pdf-3425.a465-9q4k.cloudera.site/dex/api/v1
+```
 
+```
 # List all jobs in the Virtual Cluster whose job application file name equals "pyspark-app.py":
 cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
