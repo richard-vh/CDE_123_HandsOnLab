@@ -11,6 +11,7 @@ This document provides instructions for setting up HOL dependencies. The HOL lea
 * [Important Information](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#important-information)
 * [Deployment Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#deployment-instructions)
 * [Teardown Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#teardown-instructions)
+* [Python Utils]()
 * [Summary](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#summary)
 
 
@@ -130,6 +131,21 @@ When you are done run this script to tear down the data in the Catalog but not i
 ```
 % ./teardown.sh cdpworkloaduser
 ```
+
+## Python Utils
+
+#### Destroy All Jobs for an HOL Participant
+
+You can delete all jobs created by a particular hol user by running the "setup/destroy_jobs.py" script from your local machine.
+
+This is useful when a particular hol participant needs to start the labs from scratch after having completed only some of the labs.
+
+Before running, edit the following parameters:
+
+* Lines 48, 49: add Jobs API URL's of Virtual Clusters where you want to remove the user's jobs.
+* Line 50: add hol_username e.g. "user001"
+* Line 52: workload username for authenticating against the CDE VC.
+* Line 53: workload password for authenticating against the CDE VC.
 
 ## Summary
 
