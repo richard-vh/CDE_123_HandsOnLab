@@ -11,7 +11,7 @@ This document provides instructions for setting up HOL dependencies. The HOL lea
 * [Important Information](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#important-information)
 * [Deployment Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#deployment-instructions)
 * [Teardown Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#teardown-instructions)
-* [Python Utils]()
+* [Python Utils](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#python-utils)
 * [Summary](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#summary)
 
 
