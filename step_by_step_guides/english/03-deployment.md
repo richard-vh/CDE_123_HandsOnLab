@@ -74,7 +74,7 @@ cde job create --name cde_spark_job_prd_user001 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
   --vcluster-endpoint https://rncv8wqr.cde-mbk2gj8x.pdf-3425.a465-9q4k.cloudera.site/dex/api/v1 \
-  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-colombia \
+  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-experian \
   --arg user001
 ```
 
@@ -135,7 +135,7 @@ For example:
 cde job create --name cde_spark_job_bronze_user001 \
   --type spark \
   --arg user001 \
-  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-colombia \
+  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-experian \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
@@ -160,7 +160,7 @@ cde job create --name cde_spark_job_silver_user001 \
 cde job create --name cde_spark_job_gold_user001 \
   --type spark \
   --arg user001 \
-  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-colombia \
+  --arg s3a://pdf-3425-buk-c59557bd/data/cde-123-demo-experian \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
