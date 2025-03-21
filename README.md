@@ -1,6 +1,6 @@
 # CDE 1.23 Hands On Lab
 
-![alt text](/img/labs-ref-arch.png)
+![alt text](/img/new-ref-arch.png)
 
 ## About the CDE Lab
 
