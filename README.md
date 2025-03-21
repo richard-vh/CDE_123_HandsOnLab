@@ -1,5 +1,7 @@
 # CDE 1.23 Hands On Lab
 
+![alt text](img/labs-ref-arch.png)
+
 ## About the CDE Lab
 
 In these Labs you will gain hands-on experience the Cloudera Data Engineering Service. You will:
