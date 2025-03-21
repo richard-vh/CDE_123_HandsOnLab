@@ -8,7 +8,6 @@ This document provides instructions for setting up HOL dependencies. The HOL lea
 ## Table of Contents
 
 * [Requirements](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#requirements)
-* [Important Information](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#important-information)
 * [Deployment Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#deployment-instructions)
 * [Teardown Instructions](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#teardown-instructions)
 * [Python Utils](https://github.com/pdefusco/CDE_123_HOL/tree/main/setup#python-utils)
@@ -27,14 +26,6 @@ To deploy the demo via this automation you need:
 * The Docker Custom Runtime entitlement. Please contact the CDE product or sales team to obtain the entitlement.
 * A Dockerhub account. Keep your Dockerhub user and password handy.
 * A GitHub account. Keep have your GitHub token handy.
-
-
-## Important Information
-
-The automation deploys the following to your CDE Virtual Cluster:
-
-* A CDE Spark Job and associated CDE Resources with the purpose of creating synthetic data in Cloud Storage for each participant.
-* Files are written to Cloud Storage via standard Spark methods.
 
 
 ## Deployment Instructions
