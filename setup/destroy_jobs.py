@@ -37,7 +37,7 @@
 # #  Author(s): Paul de Fusco
 #***************************************************************************/
 
-!pip install "cdepy>=0.1.17"
+#!pip install "cdepy>=0.1.17"
 
 from cdepy import cdeconnection
 from cdepy import cdejob
@@ -45,7 +45,7 @@ from cdepy import cdemanager
 from cdepy import cderesource
 from cdepy import utils
 
-DEV_JOBS_API_URL = "https://kjmdj97b.cde-mbk2gj8x.pdf-3425.a465-9q4k.cloudera.site/dex/api/v1"
+DEV_JOBS_API_URL = "https://h84gnslb.cde-mbk2gj8x.pdf-3425.a465-9q4k.cloudera.site/dex/api/v1"
 PRD_JOBS_API_URL = "https://rncv8wqr.cde-mbk2gj8x.pdf-3425.a465-9q4k.cloudera.site/dex/api/v1"
 hol_username = "user001"
 
