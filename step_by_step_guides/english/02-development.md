@@ -127,7 +127,7 @@ For example:
 ```
 cde spark submit \
   pyspark-app.py \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1 \
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1 \
   --executor-memory "4g" \
   --executor-cores 2 \
   s3a://pauldefusco-buk-eb9a0129/data \
@@ -162,10 +162,12 @@ For example:
 cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
   --url https://github.com/pdefusco/CDE_123_HOL.git \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
+```
 
+```
 cde repository sync --name sparkAppRepoDevUser001 \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
 ![alt text](../../img/repos.png)
@@ -210,7 +212,7 @@ cde job create --name cde_spark_iceberg_job_user001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1 \
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1 \
   --arg s3a://pauldefusco-buk-eb9a0129/data \
   --arg user001
 ```
@@ -219,7 +221,7 @@ cde job create --name cde_spark_iceberg_job_user001 \
 cde job run --name cde_spark_iceberg_job_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
 ![alt text](../../img/cde-job-1.png)
@@ -249,7 +251,7 @@ For example:
 ```
 # List all Jobs in the Virtual Cluster:
 cde job list \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
 ![alt text](../../img/cde-job-list-1.png)
@@ -274,14 +276,14 @@ For example:
 # List all jobs in the Virtual Cluster whose name is "cde_spark_job_user001":
 cde job list \
   --filter 'name[eq]cde_spark_iceberg_job_user001' \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
 ```
 # List all jobs in the Virtual Cluster whose job application file name equals "pyspark-app.py":
 cde job list \
   --filter 'spark.file[eq]pyspark-app.py' \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
 ![alt text](../../img/cde-job-list-2.png)
@@ -299,7 +301,7 @@ For example:
 # List all runs for Job "cde_spark_job_user001":
 cde run list \
   --filter 'job[eq]cde_spark_iceberg_job_user001' \
-  --vcluster-endpoint https://nwl7zbbs.cde-hq6fhv9q.pauldefu.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint https://5gfkbllj.cde-dftq4lw4.pauldf-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
 ![alt text](../../img/cde-job-list-3.png)

@@ -9,4 +9,3 @@ pyparsing==2.4.7
 jmespath
 dbldatagen
 faker==19.12.0
-great-expectations==0.17.15
