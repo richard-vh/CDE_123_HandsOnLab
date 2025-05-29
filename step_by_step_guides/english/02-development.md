@@ -151,7 +151,9 @@ cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
   --url https://github.com/pdefusco/CDE_123_HOL.git \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
+```
 
+```
 cde repository sync --name sparkAppRepoDevUser001 \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
