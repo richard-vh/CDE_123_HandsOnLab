@@ -16,12 +16,12 @@ This document provides instructions for setting up HOL dependencies. The HOL lea
 
 ## Requirements
 
-To deploy the demo via this automation you need:
+To deploy the demo / HOL via this automation you need:
 
 * A CDP tenant in Public or Private cloud.
-* A CDP Workload User with Ranger policies and IDBroker Mappings configured accordingly.
+* A CDP Workload User with Ranger policies and IDBroker Mappings configured accordingly. In particular, you must configure the Ranger Hadoop SQL and Raz (S3 or ADLS) policies accordingly.
 * An CDE Service on version 1.23 or above.
-* A CDE Spark 3.2 Virtual Cluster foe data generation and at least one CDE Spark 3.5 for the labs.
+* At least two CDE Spark 3.5 for the labs. One will serve as DEV. One will serve as PRD. If you are hosting an HOL with many participants, organizing groups of 10 participants in multiple Dev & Prd VC pairs is highly recommended.
 * A working local installation of the CDE CLI.
 * The Docker Custom Runtime entitlement. Please contact the CDE product or sales team to obtain the entitlement.
 * A Dockerhub account. Keep your Dockerhub user and password handy.
@@ -32,7 +32,7 @@ To deploy the demo via this automation you need:
 
 There are three setup steps. All three can be done in parallel.
 
-1. Create data in a Spark 3.2 or 3.3 VC.
+1. Create data using the Spark 3.5 Virtual Cluster. Using the DEV VC is recommended.
 2. Create shared participant resources (files and Python resources) in all the Spark 3.5 VC's used throughout the labs.
 3. Airflow configurations.
 
@@ -40,9 +40,9 @@ In order to complete these requirements, clone this repository in your local mac
 
 #### 1. Run deploy_hol.py in the Spark 3.5 Virtual Cluster.
 
-Even if you have multiple Spark 3.5 VC's, this step only needs to be done once in your Spark 3.2 or 3.3 VC.
+This step must only be run once.
 
-Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3.2 or 3.3 Virtual Cluster's CDE Jobs API URL.
+Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3.5 Virtual Cluster's CDE Jobs API URL.
 
 Deployment script command template:
 
@@ -50,7 +50,7 @@ Deployment script command template:
 % ./setup/new_deploy_hol.sh <cdp-workload-user> <max-hol-participants> <storage-location>
 ```
 
-Make sure to always choose the data directory. For example:
+You must always create data in the data directory. For example:
 
 ```
 #AWS
