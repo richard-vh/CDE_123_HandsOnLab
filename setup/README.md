@@ -38,7 +38,7 @@ There are three setup steps. All three can be done in parallel.
 
 In order to complete these requirements, clone this repository in your local machine and follow the steps below.
 
-#### 1. Run deploy_hol.py in a Spark 3.2 or 3.3 VC
+#### 1. Run deploy_hol.py in the Spark 3.5 Virtual Cluster.
 
 Even if you have multiple Spark 3.5 VC's, this step only needs to be done once in your Spark 3.2 or 3.3 VC.
 
@@ -47,22 +47,22 @@ Before proceeding, make sure to update your ~/.cde/config.yaml with your Spark 3
 Deployment script command template:
 
 ```
-% ./setup/deploy_hol.sh <docker-user> <cdp-workload-user> <max-hol-participants> <storage-location>
+% ./setup/new_deploy_hol.sh <cdp-workload-user> <max-hol-participants> <storage-location>
 ```
 
-For example:
+Make sure to always choose the data directory. For example:
 
 ```
 #AWS
-% ./setup/deploy_hol.sh pauldefusco pauldefusco 10 s3a://goes-se-sandbox/data/cde-123-hol
+% ./setup/new_deploy_hol.sh pauldefusco 10 s3a://goes-se-sandbox/data/cde-123-hol
 ```
 
 ```
 #Azure
-% ./setup/deploy_hol.sh pauldefusco pauldefusco 10 abfs://logs@go01demoazure.dfs.core.windows.net/data/cde-123-hol
+% ./setup/new_deploy_hol.sh pauldefusco 7 abfs://logs@go01demoazure.dfs.core.windows.net/data/cde-123-hol
 ```
 
-#### 2. Run deploy_hol_resources.py in all the Spark 3.5 VC's
+#### 2. Run deploy_hol_resources.py in all the Spark 3.5 Virtual Clusters used by Participants.
 
 You must repeat these steps for each Spark 3.5 VC in which HOL participants will work through the labs.
 
