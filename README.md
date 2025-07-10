@@ -20,13 +20,13 @@ CDE allows you to create, manage, and schedule Apache Spark jobs without the ove
 
 ## Step by Step Instructions
 
-Detailed instructions are provided in the [step_by_step_guides](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/english).
+Detailed instructions are provided in the [step_by_step_guides](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/english).
 
-* [Link to the English Guide](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/english)
-* [Enlace a la Guía en Español](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/espa%C3%B1ol)
-* [Lien vers le Guide en Français](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/fran%C3%A7ais)
-* [Link per la Guida in Italiano](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/italiano)
-* [Link para o Guia em Português](https://github.com/pdefusco/CDE_123_HOL/tree/main/step_by_step_guides/portugu%C3%AAs)
+* [Link to the English Guide](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/english)
+* [Enlace a la Guía en Español](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/espa%C3%B1ol)
+* [Lien vers le Guide en Français](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/fran%C3%A7ais)
+* [Link per la Guida in Italiano](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/italiano)
+* [Link para o Guia em Português](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/portugu%C3%AAs)
 
 ## Setup Instructions
 
