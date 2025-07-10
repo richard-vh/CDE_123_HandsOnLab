@@ -4,8 +4,8 @@
 
 ## Contents
 
-1. [Spark Application Development](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
-2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_123_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
+1. [Spark Application Development](https://github.com/richard-vh/CDE_123_HandsOnLab/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
+2. [CDE Repositories, Jobs, and Monitoring](https://github.com/richard-vh/CDE_123_HandsOnLab/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
 
 We will prototype and test the Iceberg Merge Into and Incremental Read Operations.
 
@@ -16,7 +16,7 @@ We will prototype and test the Iceberg Merge Into and Incremental Read Operation
 Clone the GitHub repository in your local machine.
 
 ```
-git clone https://github.com/pdefusco/CDE_123_HOL.git
+git clone https://github.com/richard-vh/CDE_123_HandsOnLab.git
 cd CDE_123_HOL
 ```
 
@@ -38,11 +38,28 @@ You will use the terminal in the IDE to run the CDE CLI commands for the labs. F
 
 #### Configure the CDE CLI and Install Spark Connect for CDE.
 
-Open CDE's configurations and apply your Workload Username and Jobs API URL. You can find your Jobs API URL in your Virtual Cluster's Details Page.
+We need to configure the CDE CLI to be able to connect to our CDE virtual cluster. 
+
+Go to the virtual cluster in CDE and click on the Cluster Details icon. 
 
 ![alt text](../../img/jobs-api-url-1.png)
 
+Click the actions button and select Copy Jobs API URL.
+
 ![alt text](../../img/jobs-api-url-2.png)
+
+In the JupyterLab IDE open a terminal window by click on the terminal tile on the main page.
+
+Edit the cde config file, adding your username i.e USER<XXX>, and the Jobs API URL copied from above, replacing the placeholders. 
+
+```
+vi ~/.cde/config.yaml
+```
+```
+user: <your-cdp-workload-user>\
+vcluster-endpoint: <your-Jobs-API-URL>\
+cdp-endpoint: https://api.us-west-1.cdp.cloudera.com
+```
 
 ![alt text](../../img/cli-configs-1.png)
 
@@ -56,6 +73,16 @@ Next, generate a CDP access token and edit your CDP credentials.
 
 ![alt text](../../img/usr-mgt-3.png)
 
+Copy and paste your CDP access token access key id and private key into the CDP credentials file, replacing the placeholders.
+
+```
+vi ~/.cdp/credentials
+```
+```
+[default]
+cdp_access_key_id = <your-cdp-access-key-id>
+cdp_private_key = <your-cdp-private-key>
+```
 ![alt text](../../img/cdp-credentials.png)
 
 Finally, create a Python environment and install the CDE Spark Connect tarballs.
@@ -149,7 +176,7 @@ CDE Repositories are used to import files and dependencies into Virtual Clusters
 ```
 cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
-  --url https://github.com/pdefusco/CDE_123_HOL.git \
+  --url https://github.com/richard-vh/CDE_123_HandsOnLab.git \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
@@ -163,7 +190,7 @@ For example:
 ```
 cde repository create --name sparkAppRepoDevUser001 \
   --branch main \
-  --url https://github.com/pdefusco/CDE_123_HOL.git \
+  --url https://github.com/richard-vh/CDE_123_HandsOnLab.git \
   --vcluster-endpoint https://n4lzxz9j.cde-l5vgkd5t.rapids-d.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
