@@ -142,7 +142,7 @@ In your Jupyter:ab terminal run the following commands to run your code as a Spa
 ```
 cde spark submit \
   pyspark-app.py \
-  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
+  --vcluster-endpoint <your-vc-jobs-api-url-here> \
   --executor-memory "4g" \
   --executor-cores 2 \
   <your-storage-location-here> \
@@ -181,13 +181,13 @@ Make sure to update the **--name** and **vcluster-endpoint** parameters before e
 cde repository create --name sparkAppRepoDev<Userxxx> \
   --branch main \
   --url https://github.com/richard-vh/CDE_123_HandsOnLab.git \
-  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
+  --vcluster-endpoint <your-vc-jobs-api-url-here>
 ```
 Make sure to update the **--name** and **vcluster-endpoint** parameters before executing the CLI command.
 
 ```
 cde repository sync --name sparkAppRepoDev<Userxxx> \
-  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
+  --vcluster-endpoint <your-vc-jobs-api-url-here>
 ```
 
 For example:
@@ -206,7 +206,11 @@ cde repository sync --name sparkAppRepoDevUser001 \
 
 ![alt text](../../img/repos.png)
 
+In CDE verify that your new repository was created by clicking on the **Repositories** menu item.
+
 ![alt text](../../img/cde-repos-1.png)
+
+Click into your repository and verify that the files have been sycned from Git.
 
 ![alt text](../../img/cde-repos-2.png)
 
@@ -216,25 +220,28 @@ Now create a CDE Spark job using the CDE Repository as a dependency.
 
 The files in the Repository are mounted and reachable by the Application at runtime.
 
-Before executing the CLI commands, update the name, resource, and vcluster endpoint options according to your assigned username.
+Before executing the CLI commands, update the **--name**, **--mount-1-resource**, **--vcluster-endpoint**, storage location **--arg** and username **--arg** options according to your assigned username.
+
+Create the job.
 
 ```
-cde job create --name cde_spark_iceberg_job_user001 \
+cde job create --name cde_spark_iceberg_job_<userxxx> \
   --type spark \
-  --mount-1-resource sparkAppRepoDevUser001 \
+  --mount-1-resource sparkAppRepoDev<userxxx> \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here> \
+  --vcluster-endpoint <your-vc-jobs-api-url-here> \
   --arg <your-storage-location-here> \
   --arg <your-hol-username-here>
 ```
+And run the job. Note how we can change the job resources profile when we run it or just accept the job defaults.
 
 ```
-cde job run --name cde_spark_iceberg_job_user001 \
+cde job run --name cde_spark_iceberg_job_<userxxx> \
   --executor-cores 4 \
   --executor-memory "2g" \
-  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
+  --vcluster-endpoint <your-vc-jobs-api-url-here>
 ```
 
 For example:
@@ -277,7 +284,7 @@ Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
 ```
 # List all Jobs in the Virtual Cluster:
 cde job list \
-  --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
+  --vcluster-endpoint <your-vc-jobs-api-url-here>
 ```
 
 For example:
