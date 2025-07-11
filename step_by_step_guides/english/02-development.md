@@ -65,7 +65,7 @@ cdp-endpoint: https://api.us-west-1.cdp.cloudera.com
 
 ![alt text](../../img/cli-configs-2.png)
 
-Next, generate a CDP access token and edit your CDP credentials.
+Next, generate a CDP access token and edit your CDP credentials. You can do this either by going to User Management and finding your user or by clicking on your username at the bottom left of the screen and selecting Profile.
 
 ![alt text](../../img/usr-mgt-1.png)
 
@@ -73,7 +73,7 @@ Next, generate a CDP access token and edit your CDP credentials.
 
 ![alt text](../../img/usr-mgt-3.png)
 
-Copy and paste your CDP access token access key id and private key into the CDP credentials file, replacing the placeholders.
+Copy your CDP access token Access Key Id and Private Key, and in the JupyterLab terminal window edit your CDP credentials file, pasting the values over the the placeholders.
 
 ```
 vi ~/.cdp/credentials
@@ -85,7 +85,7 @@ cdp_private_key = <your-cdp-private-key>
 ```
 ![alt text](../../img/cdp-credentials.png)
 
-Finally, create a Python environment and install the CDE Spark Connect tarballs.
+Finally in the terminal window, install the CDE Spark Connect tarballs.
 
 ```
 pip3 install cdeconnect.tar.gz  
@@ -100,7 +100,7 @@ Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it
 
 ```
 cde session create \
-  --name paul-hol-session \
+  --name <userxxx>-hol-session \
   --type spark-connect \
   --num-executors 2 \
   --driver-cores 2 \
@@ -111,7 +111,7 @@ cde session create \
 
 ![alt text](../../img/launchsess.png)
 
-In the Sessions UI, validate the Session is Running.
+Back in CDE, click on Sessions menu, and in the Sessions UI, validate that your session is running with the session name you provided above.
 
 ![alt text](../../img/cde_session_validate_1.png)
 
