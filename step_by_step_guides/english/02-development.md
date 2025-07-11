@@ -267,7 +267,13 @@ cde job run --name cde_spark_iceberg_job_user001 \
 
 ![alt text](../../img/cde-job-1.png)
 
+####  Monitor
+
+In CDE go click the **Job Runs** menu and see you job executing.
+
 ![alt text](../../img/cde-job-2.png)
+
+Select the job by clicking into it and take a look at the **Trends**, **Configuration**, **Logs** and **Spark UI** tabs where you can monitor aspect of the submitted job.
 
 ![alt text](../../img/cde-job-3.png)
 
@@ -277,9 +283,10 @@ cde job run --name cde_spark_iceberg_job_user001 \
 
 ![alt text](../../img/cde-job-6.png)
 
-####  Monitor
 
-Navigate to the Job Runs UI / run a few CDE CLI commands to check status.
+We can also monitor the job using the CLI.
+
+In the JupyterLab terminal window run a few CDE CLI commands to check status.
 
 ```
 # List all Jobs in the Virtual Cluster:
@@ -296,6 +303,8 @@ cde job list \
 ```
 
 ![alt text](../../img/cde-job-list-1.png)
+
+We can also apply filter experssions for listing jobs in the CLI. 
 
 ```
 # List all jobs in the Virtual Cluster whose name is "cde_spark_job_user001":
