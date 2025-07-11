@@ -44,11 +44,11 @@ Go to the virtual cluster in CDE and click on the Cluster Details icon.
 
 ![alt text](../../img/jobs-api-url-1.png)
 
-Click the actions button and select Copy Jobs API URL.
+Click the **Actions** button and select **Copy Jobs API URL**.
 
 ![alt text](../../img/jobs-api-url-2.png)
 
-In the JupyterLab IDE open a terminal window by click on the terminal tile on the main page.
+In the JupyterLab IDE open a terminal window by click on the **Terminal** tile on the main page.
 
 Edit the cde config file, adding your username i.e USER<XXX>, and the Jobs API URL copied from above, replacing the placeholders. 
 
@@ -65,7 +65,7 @@ cdp-endpoint: https://api.us-west-1.cdp.cloudera.com
 
 ![alt text](../../img/cli-configs-2.png)
 
-Next, generate a CDP access token and edit your CDP credentials. You can do this either by going to User Management and finding your user or by clicking on your username at the bottom left of the screen and selecting Profile.
+Next, generate a CDP access token and edit your CDP credentials. You can do this either by going to **User Management** and finding your user or by clicking on your username at the bottom left of the screen and selecting **Profile**. Under your user select **Generate Access Key**.
 
 ![alt text](../../img/usr-mgt-1.png)
 
@@ -73,7 +73,7 @@ Next, generate a CDP access token and edit your CDP credentials. You can do this
 
 ![alt text](../../img/usr-mgt-3.png)
 
-Copy your CDP access token Access Key Id and Private Key, and in the JupyterLab terminal window edit your CDP credentials file, pasting the values over the the placeholders.
+Copy your CDP access token **Access Key ID** and **Private Key**, and in the JupyterLab terminal window edit your CDP credentials file, pasting the values over the the placeholders.
 
 ```
 vi ~/.cdp/credentials
@@ -96,7 +96,7 @@ pip3 install pyspark-3.5.1.tar.gz
 
 #### Launch a CDE Spark Connect Session
 
-Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it doesn't collide with other users' sessions. You will be prompted for your Workload Password. This is the same password you used to log into CDP.
+In the JupyterLab terminsal window, start a CDE Session of type Spark Connect. Edit the session **--name** parameter so it doesn't collide with other users' sessions. You will be prompted for your Workload Password. This is the same password you used to log into CDP.
 
 ```
 cde session create \
@@ -111,7 +111,7 @@ cde session create \
 
 ![alt text](../../img/launchsess.png)
 
-Back in CDE, click on Sessions menu, and in the Sessions UI, validate that your session is running with the session name you provided above.
+Back in CDE, click on **Sessions** menu, and in the Sessions UI, validate that your session is running with the session name you provided above.
 
 ![alt text](../../img/cde_session_validate_1.png)
 
@@ -121,7 +121,7 @@ Back in CDE, click on Sessions menu, and in the Sessions UI, validate that your 
 
 You are now ready to connect to the CDE Session from your local JupyterLab IDE using Spark Connect.
 
-Open Iceberg_TimeTravel_PySpark.ipynb. Update the Spark Connect session name, the username and the Storage Location variables in the first two cells. Then run each cell in the notebook.
+Open **Iceberg_TimeTravel_PySpark.ipynb**. Update the Spark Connect session name, the username and the storage location variables in the first two cells. **Then run each cell in the notebook**.
 
 ```
 from cde import CDESparkConnectSession
@@ -137,7 +137,7 @@ username = <your-cdp-workload-username-here>
 
 #### Prototype the Spark & Iceberg Application as a Spark Submit
 
-On your terminal run the following commands to run your code as a Spark Submit. Make sure to edit the "vcluster-ednpoint" option according to your Virtual Cluster's Jobs API URL.
+In your Jupyter:ab terminal run the following commands to run your code as a Spark Submit. Make sure to edit the **vcluster-endpoint** option according to your Virtual Cluster's **Jobs API URL** and substitute your storage location and username in the placeholders (you can copy these from the JupyterLab notebook code used above. 
 
 ```
 cde spark submit \
@@ -161,9 +161,11 @@ cde spark submit \
   user001
 ```
 
-Wait for the application to run and validate results in the terminal.
+Wait for the application to run and validate the results in the terminal.
 
 ![alt text](../../img/cde-spark-submit.png)
+
+In CDE under **Job Runs** you should be able to see the same job that has run and be able to access the logs for the job as well.
 
 ![alt text](../../img/cli-submit.png)
 
@@ -171,17 +173,20 @@ You are now ready to convert the Spark Submit into a CDE Spark Job.
 
 ## Lab 2. CDE Repositories, Jobs, and Monitoring
 
-CDE Repositories are used to import files and dependencies into Virtual Clusters by cloning git repositories. Create your CDE Repository and sync it with the Git Repository. Make sure to update the name and vcluster-endpoint parameters before executing the CLI commands.
+CDE Repositories are used to import files and dependencies into Virtual Clusters by cloning git repositories. Create your CDE Repository and sync it with the Git Repository.
+
+Make sure to update the **--name** and **vcluster-endpoint** parameters before executing the CLI command.
 
 ```
-cde repository create --name sparkAppRepoDevUser001 \
+cde repository create --name sparkAppRepoDev<Userxxx> \
   --branch main \
   --url https://github.com/richard-vh/CDE_123_HandsOnLab.git \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
+Make sure to update the **--name** and **vcluster-endpoint** parameters before executing the CLI command.
 
 ```
-cde repository sync --name sparkAppRepoDevUser001 \
+cde repository sync --name sparkAppRepoDev<Userxxx> \
   --vcluster-endpoint <your-DEV-vc-jobs-api-url-here>
 ```
 
