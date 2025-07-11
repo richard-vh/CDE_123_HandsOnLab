@@ -93,6 +93,8 @@ cdp_private_key = <your-cdp-private-key>
 ```
 ![alt text](../../img/cdp-credentials.png)
 
+![alt text](../../img/cdp-credentials-2.png)
+
 Finally in the terminal window, install the CDE Spark Connect tarballs.
 
 ```
