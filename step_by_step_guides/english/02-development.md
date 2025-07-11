@@ -65,17 +65,23 @@ cdp-endpoint: https://api.us-west-1.cdp.cloudera.com
 
 ![alt text](../../img/cli-configs-2.png)
 
-Next, generate a CDP access token. Click on your username at the bottom left of the screen and select **Profile**. Under your user select **Generate Access Key**.
+Next, generate a CDP access token. Click on your username at the bottom left of the screen and select **Profile**. 
 
 ![alt text](../../img/usr-mgt-1.png)
 
+Under your user select **Generate Access Key**.
+
 ![alt text](../../img/usr-mgt-2.png)
+
+And select **Generate Access Key** again.
 
 ![alt text](../../img/usr-mgt-3.png)
 
+Copy your CDP access token **Access Key ID** and **Private Key** and/or **Download Credentials File**.
+
 ![alt text](../../img/usr-mgt-4.png)
 
-Copy your CDP access token **Access Key ID** and **Private Key**, and in the JupyterLab terminal window edit your CDP credentials file, pasting the values over the the placeholders.
+In the JupyterLab terminal window edit your CDP credentials file, pasting your CDP access token **Access Key ID** and **Private Key** over the the placeholders.
 
 ```
 vi ~/.cdp/credentials
