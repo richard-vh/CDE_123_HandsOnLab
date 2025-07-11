@@ -23,7 +23,7 @@ cd CDE_123_HOL
 Launch the Docker container.
 
 ```
-docker run -p 8888:8888 pauldefusco/cde123hol
+docker run -p 8888:8888 rvanheerden/cde123hol
 ```
 
 Launch the JupyterLab IDE in your browser by copy and pasting the provided url as shown below.
