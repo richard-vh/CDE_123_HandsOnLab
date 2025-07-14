@@ -18,6 +18,32 @@ CDE is the Cloudera Data Engineering Service, a containerized managed service fo
 
 CDE allows you to create, manage, and schedule Apache Spark jobs without the overhead of creating and maintaining Spark clusters. With CDE, you define virtual clusters with a range of CPU and memory resources, and the cluster scales up and down as needed to run your Spark workloads, helping to control your cloud costs.
 
+## Agenda & Times
+
+1. CDE Architecture (xx minutes)
+    * Introduction to the CDE Service
+      * CDP Environment
+      * CDP Service
+      * Virtual Cluster
+      * CDE Jobs
+      * CDE Resource
+      * Job Run
+      * CDE Sessions
+      * Apache Iceberg
+      * CDE User Interface
+    * Summary
+2. CDE Development (xx minutes)
+    * Lab 1. Spark Application Development
+    * Lab 2. CDE Repositories, Jobs, and Monitoring
+3. CDE Deployment (xx minutes)
+    * Lab 3. Promote to higher env using API by replicating repo and redeploy
+    * Lab 4. Build Orchestration Pipeline with Airflow
+4. CDE Observability (xx minutes)
+    * Lab 5. Monitoring Jobs with Cloudera Observability and CDE
+    * Lab 6. Spark Job Governance with CDP Data Catalog
+5. Additional Labs (xx minutes)
+    * Lab x. Time dependant
+
 ## Step by Step Instructions
 
 Detailed instructions are provided in the [step_by_step_guides](https://github.com/richard-vh/CDE_123_HandsOnLab/tree/main/step_by_step_guides/english).
